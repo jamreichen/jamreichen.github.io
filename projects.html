@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JR Portfolio</title>
+  <style>
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      padding: 50px;
+      background: url('stars.gif') repeat;
+      animation: scroll 20s linear infinite;
+      border-bottom: 3px solid #00ffff;
+    }
+    @keyframes scroll { 0% { background-position: 0 0; } 100% { background-position: 100% 0; } }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #333;
+      padding: 20px;
+      border: 2px solid cyan;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px cyan;
+    }
+    .card.locked::before {
+      content: "🔒 Unlock Me";
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      color: #ff5555;
+      background-color: #000000;
+    }
+    .card.unlocked::before { display: none; }
+    .hud {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border: 1px solid #00ff00;
+    }
+    .health-bar {
+      width: 100px;
+      height: 10px;
+      background: #ff5555;
+      border: 1px solid #fff;
+    }
+    .health-bar-fill {
+      height: 100%;
+      background: #00ff00;
+      width: 75%; /* Dynamic with JS later */
+    }
+
+    @keyframes wander {
+      0% { left: 0; top: 0; }
+      25% { left: 50px; top: 20px; }
+      50% { left: 20px; top: 60px; }
+      75% { left: 80px; top: 30px; }
+      100% { left: 0; top: 0; }
+    }
+    .mute-btn {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      padding: 5px 10px;
+      background: #555;
+      border: 1px solid cyan;
+      cursor: pointer;
+    }
+      /* Return Home Button Style */
+  .return-home-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #00ffff;
+    color: #1a1a1a;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #00ffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }s
+    .return-home-btn:hover {
+    background-color: #1a1a1a;
+    color: #00ffff;
+  }
+  </style>
+</head>
+<body>
+  <!-- Game HUD -->
+  <div class="hud">
+    <p>Player: JR | XP: <span id="xp-value">2500</span></p>
+    <div class="health-bar"><div class="health-bar-fill"></div></div>
+    <p>Mission: Explore Portfolio</p>
+  </div>  <button class="mute-btn" onclick="toggleMute()">🔊</button>
+  
+  <!-- Return Home Button -->
+  <a href="index.html" class="return-home-btn">Return Home</a>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>JR</h1>
+    <p>Developer Portfolio</p>
+    <p>AI & Maching Learning | Game Development</p>
+  </div>
+
+
+  <!-- Projects -->
+  <div class="projects">
+    <div class="card" data-locked="true">
+        <h2>Neon Skies</h2>
+        <img src="Assets/sky.jpg" alt="Game: Neon Skies" style="width: 100%;">
+        <p><strong>Technologies:</strong> Unity | C#</p>
+        <p><strong>Description:</strong> Neon Skies is a high-flying sci-fi shooter that immerses players in a futuristic world filled with intense aerial combat. Master advanced maneuvers, upgrade your ship, and battle through an engaging storyline.</p>
+        <p><strong>Features:</strong></p>
+        <ul>
+            <li>Fast-paced aerial combat</li>
+            <li>Customizable spacecraft</li>
+            <li>Engaging single-player campaign</li>
+            <li>Dynamic enemy AI</li>
+        </ul>
+        <p>
+            <a href="https://github.com/yourusername/neon-skies">View Code</a> |
+            <a href="#">Play Now</a>
+        </p>
+    </div>
+    <div class="card" data-locked="true">
+        <h2>Undergraduate Capstone: Machine Learning Predictive System</h2>
+        <img src="Assets/capstone.png" alt="Game: Neon Skies" style="width: 100%;">
+        <p><strong>Technologies:</strong> Python | Pandas | Scikit-Learn | TensorFlow | ServiceNow | InfluxDB</p>
+        <p><strong>Description:</strong> Machine Learning Predictive System on Alert Management Data", designed a python ML solution for SerivceNow alert data management.
+        </p>
+        <p><strong>Features:</strong></p>
+        <ul>
+            <li>Focus on the machine learning and alert management aspects</li>
+            <li>Predictive capabilities, integration with ServiceNow, real-time analysis, and automated notifications</li>
+            <li>Data visualization and performance optimization, which are important when handling large datasets and making accurate predictions</li>
+        </ul>
+        <p>
+            <a href="https://docs.google.com/document/d/e/2PACX-1vRdLT4P-vEDPNehtJP97FpeAoy2EQ54Wq-WyvE9HhS4v9XC4fjPOBliBZcRA-yX8WlHQFYGQLCA2NLs/pub">See Archecture and Results</a>
+        </p>
+    </div>
+    <div class="card" data-locked="true">
+      <h2>3D Data Analytics & Visualization in Mixed Reality</h2>
+      <img src="Assets/MR.png" alt="MR Project" style="width: 100%;">
+      <p><strong>Technologies:</strong> Unity | C# | Microsoft HoloLens | Data Visualization | PayPal API</p>
+      <p><strong>Description:</strong> This research project was developed in collaboration with Microsoft HoloLens and PayPal's Data Analytics Team. The project aimed to visualize PayPal's live financial data and Site Reliability Engineering (SRE) golden signals in a 3D mixed-reality environment. The visualization was showcased at the GCU Honors Symposium and PayPal Headquarters, providing interactive and immersive insights into PayPal's real-time financial performance and system health. The project leveraged HoloLens for an immersive experience, allowing analysts to explore data in a spatial 3D format, providing enhanced decision-making and faster issue identification.</p>
+      <p><strong>Features:</strong></p>
+      <ul>
+          <li>Real-Time Financial and SRE Golden Signals Data Visualization</li>
+          <li>Immersive 3D Experience with MS Hololens</li>
+          <li>Data Interaction and Customizable Dashboards
+          <li>Real-Time Collaboration</li>
+       </ul>
+      
+        <p>
+            <a href="https://docs.google.com/document/d/1q6I59iXg0DnFtJOJeK2MVqknx4gGYgUW-JVnuLXqfU4/edit?usp=sharing">See Archecture and Results</a> 
+      
+        </p>
+    </div>
+    <div class="card" data-locked="true">
+      <h2>3D Graphics Engine Demo</h2>
+      <img src="Assets/opengl.jpg" alt="3D Graphics Engine Demo" style="width: 100%;">
+      <p><strong>Technologies:</strong> C++ | OpenGL | GLSL</p>
+      <p><strong>Description:</strong> This demo showcases a custom-built 3D graphics engine written in C++ with OpenGL and GLSL for shader programming. The engine renders basic 3D shapes, manages lighting, and supports interactive camera movement. It's an excellent starting point for developers interested in learning how to build a graphics engine from scratch.</p>
+      <p><strong>Features:</strong></p>
+      <ul>
+          <li>Real-time rendering of 3D objects</li>
+          <li>Basic camera controls (zoom, pan, rotate)</li>
+          <li>Shader programming with GLSL</li>
+          <li>Interactive scene manipulation</li>
+      </ul>
+      <p>
+          <a href="https://github.com/yourusername/graphics-engine-demo">View Code</a> |
+          <a href="#">Try Demo</a>
+      </p>
+  </div>
+  
+    <div class="card" data-locked="true">
+        <h2>Synthesis(Robotics CAD to Code Simulator) </h2>
+        <img src="Assets/robotsim2.png" alt="Robot Code Simulator" style="width: 100%;">
+        <p><strong>Technologies:</strong> Unity | C# | Autodesk Inventor | C++ | Java | Robotics</p>
+        <p><strong>Description:</strong> Over the course of 2 years, developed impactful parts of open-source FIRST robotics simulator in Unity3D (C#) that maps student’s Java and C++ code to Autodesk Inventor CAD designs. Skills: Autodesk Inventor, Unity3D, C++, Java, C#, XML, HTML/CSS/JS, Github, JIRA, technical writing/ documentation
+        </p>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Interactive robot design environment using Autodesk Inventor</li>
+          <li>Real-time simulation of Java and C++ code on virtual robots</li>
+          <li>Customizable robot parts and configurations</li>
+          <li>Full integration of CAD models with code output</li>
+          <li>Supports both autonomous and user-controlled robot simulations</li>
+          <li>Open-source platform with active GitHub community</li>
+        </ul>
+        <p>
+            <a href="https://github.com/Autodesk/synthesis">View Code</a> |
+            <a href="https://synthesis.autodesk.com/">Play Now</a>
+        </p>
+    </div>
+    <div class="card" data-locked="true">
+      <h2>VR Mobile Game</h2>
+      <img src="Assets/world.jpg" alt="Game: VR Mobile Game" style="width: 100%;">
+      <p><strong>Technologies:</strong> Unity | C# | VR SDK | Mobile Development</p>
+      <p><strong>Description:</strong> VR Mobile Game is an immersive experience designed for virtual reality platforms on mobile devices. The game combines high-quality graphics and intuitive gameplay, allowing players to engage in thrilling challenges within a futuristic world. Navigate various environments, battle fierce enemies, and unlock new levels as you progress through the story.</p>
+      <p><strong>Features:</strong></p>
+      <ul>
+          <li>Immersive VR experience for mobile devices</li>
+          <li>Real-time 3D graphics with smooth gameplay</li>
+          <li>Dynamic combat and exploration mechanics</li>
+          <li>Multiple environments and levels to conquer</li>
+          <li>Realistic motion tracking for interactive gameplay</li>
+          <li>Optimized for both Android and iOS VR headsets</li>
+      </ul>
+      <p>
+            <a href="https://github.com/yourusername/neon-skies">View Code</a> |
+            <a href="#">Play Now</a>
+        </p>
+    </div>
+    <div class="card" data-locked="true">
+      <h2>Puzzle Simulator</h2>
+      <img src="Assets/puzzle.png" alt="Game: Puzzle Simulator" style="width: 100%;">
+      <p><strong>Technologies:</strong> Unity | C# | Puzzle Mechanics | AI</p>
+      <p><strong>Description:</strong> Puzzle Simulator is an engaging and challenging puzzle game that allows players to solve a variety of puzzle types. It includes a level editor for users to create their own puzzles and share them with others. The game features intelligent AI to assist players when needed, while also providing hints and step-by-step solutions for each puzzle.</p>
+      <p><strong>Features:</strong></p>
+      <ul>
+          <li>Multiple puzzle types: jigsaw, logic, and number puzzles</li>
+          <li>User-generated levels and puzzles</li>
+          <li>AI assistance with hints and solutions</li>
+          <li>Customizable puzzle difficulty levels</li>
+          <li>Interactive UI for an immersive experience</li>
+          <li>Leaderboard for competitive players</li>
+      </ul>
+      <p>
+          <a href="https://github.com/yourusername/puzzle-simulator">View Code</a> |
+          <a href="#">Play Now</a>
+      </p>
+  </div>
+  
+  <div class="card" data-locked="true">
+    <h2>Graph Theory Maze Simulator</h2>
+    <img src="Assets/graph_maze.png" alt="Game: Graph Theory Maze Simulator" style="width: 100%;">
+    <p><strong>Technologies:</strong> Unity | C# | Graph Theory | AI | Pathfinding</p>
+    <p><strong>Description:</strong> The Graph Theory Maze Simulator uses graph theory algorithms to generate and solve mazes. Players can explore complex mazes, visualize pathfinding algorithms like Dijkstra’s, A* search, and more. The game also allows users to create their own mazes and challenge others to solve them using various algorithms.</p>
+    <p><strong>Features:</strong></p>
+    <ul>
+        <li>Generates mazes using different graph algorithms (DFS, BFS, etc.)</li>
+        <li>Interactive maze-solving with real-time algorithm visualizations</li>
+        <li>Multiple pathfinding algorithms: Dijkstra’s, A*, and more</li>
+        <li>Customizable maze difficulty and size</li>
+        <li>Maze editor for creating and sharing custom mazes</li>
+        <li>AI visualization showing step-by-step algorithm progression</li>
+    </ul>
+    <p>
+        <a href="https://github.com/yourusername/graph-theory-maze-simulator">View Code</a> |
+        <a href="#">Play Now</a>
+    </p>
+</div>
+<div class="card" data-locked="true">
+  <h2>ML-Based Image Classification</h2>
+  <img src="Assets/model.png" alt="Project: ML-Based Image Classification" style="width: 100%;">
+  <p><strong>Technologies:</strong> Python | TensorFlow | Keras | Scikit-learn | NumPy | OpenCV</p>
+  <p><strong>Description:</strong> This project involves the creation of a machine learning model that classifies images into predefined categories. Using Convolutional Neural Networks (CNN), the model is trained on a large dataset of labeled images. The application enables real-time image classification and can be integrated into various systems such as security, healthcare, or e-commerce to automate categorization tasks.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Image classification using CNN (Convolutional Neural Networks)</li>
+      <li>Integration with TensorFlow/Keras for training deep learning models</li>
+      <li>Real-time image classification with OpenCV for video input</li>
+      <li>Model optimization with techniques like data augmentation and dropout</li>
+      <li>Pre-trained models available for faster deployment</li>
+      <li>Accuracy and loss evaluation graphs for model performance monitoring</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/ml-image-classification">View Code</a> |
+      <a href="#">Try Live Demo</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>VR Bible App: David and Goliath</h2>
+  <img src="Assets/bible.png" alt="VR Bible App: David and Goliath" style="width: 100%;">
+  <p><strong>Technologies:</strong> Unity | C# | Oculus VR | 3D Modeling </p>
+  <p><strong>Description:</strong> This immersive VR Bible app brings the story of David and Goliath to life. Users can step into the shoes of David as he faces Goliath, experiencing the ancient battle in a fully interactive 3D environment. Through the use of Oculus VR technology, this app enhances biblical storytelling, providing users with an interactive and engaging experience. This app is designed to educate, inspire, and allow users to explore the story in a dynamic new way.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Fully immersive VR experience using Oculus</li>
+      <li>Interactive 3D models of David, Goliath, and the battlefield</li>
+      <li>Ability to take on the role of David and engage in the battle</li>
+      <li>Bible verses and teachings displayed throughout the experience</li>
+      <li>Historical and cultural context explanations of the story</li>
+      <li>Voiceovers and ambient sounds for deeper immersion</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/vr-bible-david-goliath">View Code</a> |
+      <a href="#">Try Live Demo</a>
+  </p>
+</div>
+
+
+<div class="card" data-locked="true">
+  <h2>NLP Code Refactoring Project</h2>
+  <img src="Assets/nlp_project.jpg" alt="NLP Code Refactoring" style="width: 100%;">
+  <p><strong>Technologies:</strong> Python | Natural Language Processing (NLP) | SpaCy | NLTK | TensorFlow</p>
+  <p><strong>Description:</strong> The NLP Code Refactoring project involves improving the efficiency and maintainability of a legacy Natural Language Processing (NLP) codebase. This includes optimizing algorithms for text processing, enhancing model accuracy, and ensuring that the code is modular and reusable for future NLP tasks. The goal is to refactor the code to support multiple NLP tasks such as text classification, named entity recognition (NER), and sentiment analysis, while improving its performance and readability.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Optimized text preprocessing algorithms</li>
+      <li>Refactored machine learning model pipeline</li>
+      <li>Modular code for scalability and reuse</li>
+      <li>Enhanced model performance with advanced techniques</li>
+      <li>Integration with popular NLP libraries (SpaCy, NLTK)</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/nlp-refactoring-project">View Code</a> |
+      <a href="#">Try the Demo</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>Farmstead Adventures</h2>
+  <img src="Assets/farming_sim.jpg" alt="Game: Farmstead Adventures" style="width: 100%;">
+  <p><strong>Technologies:</strong> Unreal Engine | C++ | Blueprint | OpenGL</p>
+  <p><strong>Description:</strong> Farmstead Adventures is a farming simulator where players inherit a rundown farm and work to restore it to its former glory. Inspired by games like Stardew Valley, players can plant crops, raise animals, and interact with a rich community of NPCs in a charming, dynamic world. The game features seasonal cycles, festivals, and personalized farm upgrades to give a rewarding experience. Players can also build relationships, complete quests, and unlock new farm tools and equipment as they progress.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Dynamic seasonal farming with crops and animals</li>
+      <li>Build and customize your farm with various upgrades</li>
+      <li>Interactive NPCs and relationships</li>
+      <li>Festivals, quests, and mini-games</li>
+      <li>Realistic farming mechanics: watering, planting, harvesting</li>
+      <li>Day-night cycle with immersive graphics</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/farmstead-adventures">View Code</a> |
+      <a href="#">Play Now</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>AR Quest: Adventure Awaits</h2>
+  <img src="Assets/ar_game.jpg" alt="Game: AR Quest" style="width: 100%;">
+  <p><strong>Technologies:</strong> Unity | C# | ARKit | ARCore</p>
+  <p><strong>Description:</strong> AR Quest: Adventure Awaits is an immersive mobile game that blends real-world exploration with fantastical quests through augmented reality. Players embark on a treasure hunt across their environment, solving puzzles, battling mythical creatures, and uncovering hidden treasures using their mobile devices. The game utilizes AR technology to interact with the real world, creating a truly engaging and interactive experience. Each level features unique challenges that take advantage of location-based gameplay and object recognition.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Location-based quests and exploration</li>
+      <li>Interactive AR creatures and objects</li>
+      <li>Puzzle-solving and treasure hunts in the real world</li>
+      <li>AR-enhanced gameplay with immersive visual effects</li>
+      <li>Customizable character avatars and equipment</li>
+      <li>Multiplayer mode for cooperative treasure hunts</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/ar-quest">View Code</a> |
+      <a href="#">Play Now</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>Unreal Quest Locator</h2>
+  <img src="Assets/unreal_quest_locator.jpg" alt="Game: Unreal Quest Locator" style="width: 100%;">
+  <p><strong>Technologies:</strong> Unreal Engine | C++ | Blueprints</p>
+  <p><strong>Description:</strong> Unreal Quest Locator is an immersive action-adventure game powered by Unreal Engine. Players use advanced map systems to track and complete dynamic quests in an open-world environment. The game focuses on exploration, puzzle-solving, and real-time decision-making. By interacting with NPCs, the environment, and various quest markers, players uncover a variety of challenges. The quest locator system dynamically adjusts to player progress, offering hints and quest details in real-time, ensuring an engaging experience every time the player logs in.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Real-time quest locator and mapping system</li>
+      <li>Open-world exploration with dynamic environments</li>
+      <li>Interactive NPCs and questline progression</li>
+      <li>Immersive puzzle-solving mechanics</li>
+      <li>Multiple quest types: combat, exploration, and strategy</li>
+      <li>Detailed world-building with atmospheric graphics</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/unreal-quest-locator">View Code</a> |
+      <a href="#">Play Now</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>Unreal Normals for Nanite Development</h2>
+  <img src="Assets/unreal_normals_nanite.jpg" alt="Unreal Normals for Nanite Development" style="width: 100%;">
+  <p><strong>Technologies:</strong> Unreal Engine | Nanite | C++ | 3D Asset Optimization</p>
+  <p><strong>Description:</strong> Unreal Normals for Nanite Development focuses on optimizing normal maps and surface detail for high-fidelity rendering with Unreal Engine's Nanite technology. Nanite enables real-time performance with massive polygon counts, but creating detailed and accurate normals is crucial to maintain visual quality. This project delves into best practices for creating, exporting, and utilizing normals with Nanite assets, ensuring that complex 3D models are rendered at their best while maintaining high performance on next-gen hardware. The guide covers topics like normal map baking, adjusting normals for different lighting conditions, and integrating them with Nanite for seamless rendering.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Optimized normal maps for high-poly assets in Nanite</li>
+      <li>Detailed workflow for exporting normals with complex materials</li>
+      <li>Integration of Nanite with Unreal Engine's rendering pipeline</li>
+      <li>Techniques for creating accurate lighting and shadows on Nanite assets</li>
+      <li>Best practices for optimizing performance without sacrificing detail</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/unreal-normals-nanite">View Code</a> |
+      <a href="#">Play Now</a>
+  </p>
+</div>
+
+
+<div class="card" data-locked="true">
+  <h2>Sentiment Analysis of Social Media Data</h2>
+  <img src="Assets/sentiment_analysis_social_media.jpg" alt="Sentiment Analysis of Social Media Data" style="width: 100%;">
+  <p><strong>Technologies:</strong> Python | NLP | TensorFlow | Social Media APIs | Data Analysis</p>
+  <p><strong>Description:</strong> This project leverages Natural Language Processing (NLP) and machine learning techniques to analyze sentiment in social media posts. By collecting data from platforms like Twitter, Instagram, and Facebook, we can apply sentiment analysis algorithms to categorize user emotions such as positive, negative, or neutral. The goal of this project is to gain insights into public opinion, track sentiment trends over time, and provide a deeper understanding of how different topics or events are perceived across various social media platforms. The system uses pre-trained NLP models like BERT or GPT, and integrates with social media APIs to pull real-time data for analysis.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Real-time sentiment analysis of social media posts</li>
+      <li>Integration with popular social media platforms via APIs</li>
+      <li>Visual representation of sentiment trends over time</li>
+      <li>Customizable sentiment classification (positive, negative, neutral)</li>
+      <li>Exploration of topics and hashtags with varying sentiment</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/sentiment-analysis-social-media">View Code</a> |
+      <a href="#">Demo</a>
+  </p>
+</div>
+
+<div class="card" data-locked="true">
+  <h2>Music Recommendation System</h2>
+  <img src="Assets/music_recommendation_system.jpg" alt="Music Recommendation System" style="width: 100%;">
+  <p><strong>Technologies:</strong> Python | Machine Learning | Pandas | Scikit-learn | Music APIs</p>
+  <p><strong>Description:</strong> This project implements a music recommendation system that suggests songs based on user preferences and listening history. By analyzing patterns in user behavior and using machine learning algorithms such as collaborative filtering and content-based filtering, the system recommends songs, albums, or artists that align with the user's tastes. The system integrates with music APIs like Spotify to fetch data such as track details, genre information, and user playlists, providing personalized suggestions. The recommendation engine uses similarity metrics to provide relevant recommendations and adapt to changing user preferences.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Collaborative and content-based filtering algorithms</li>
+      <li>Personalized song and artist recommendations</li>
+      <li>Integration with music APIs (e.g., Spotify, Last.fm)</li>
+      <li>User feedback loop to refine recommendations</li>
+      <li>Interactive user interface to explore suggested tracks</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/music-recommendation-system">View Code</a> |
+      <a href="#">Demo</a>
+  </p>
+</div>
+<div class="card" data-locked="true">
+  <h2>Pinterest API Image Detection & Recommendation System</h2>
+  <img src="Assets/pinterest_image_detection.jpg" alt="Pinterest Image Detection" style="width: 100%;">
+  <p><strong>Technologies:</strong> Python | Pinterest API | TensorFlow | Keras | Image Recognition | Machine Learning</p>
+  <p><strong>Description:</strong> This project uses the Pinterest API to integrate image detection and recommendation features into a platform. By leveraging TensorFlow and Keras for image recognition, the system can classify and analyze images pinned by users on Pinterest. The system then suggests relevant pins based on the detected image features and patterns, such as colors, objects, and context. The recommendation engine uses machine learning algorithms to suggest similar images, boards, and pins that align with user interests, providing a personalized browsing experience on Pinterest.</p>
+  <p><strong>Features:</strong></p>
+  <ul>
+      <li>Image classification and feature extraction using deep learning models</li>
+      <li>Integration with Pinterest API for real-time pin and board data</li>
+      <li>Personalized image recommendations based on detected features</li>
+      <li>Real-time content suggestion based on user preferences and trends</li>
+      <li>Interactive interface to explore recommended pins and boards</li>
+  </ul>
+  <p>
+      <a href="https://github.com/yourusername/pinterest-image-detection-recommendation">View Code</a> |
+      <a href="#">Demo</a>
+  </p>
+</div>
+
+  </div>
+
+<!-- Audio -->
+<audio id="bg-music" loop>
+    <source src="Assets/music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio> 
+
+  <audio id="click-sfx" src="Assets/click.mp3"></audio> 
+  <!-- Click sound: Credits: Sound Effect by Matthew Vakalyuk from Pixabay -->
+  <script> 
+    document.addEventListener("DOMContentLoaded", function() {
+      const bgm = document.getElementById("bg-music");
+      const clickSfx = document.getElementById("click-sfx");
+
+      let isMuted = localStorage.getItem('isMuted') === 'true'; // Get the stored mute state
+
+      // Ensure the volume is low
+   // Initial volume settings
+   bgm.volume = 0.1;
+  bgm.muted = isMuted;
+    if (bgm.paused) {
+        bgm.play(); // Ensure background music starts playing if not already
+    }
+
+      
+      // Ensure play starts on first user click
+      window.addEventListener("click", () => {
+        if (bgm.paused) {  // Make sure the background music is playing if it’s paused
+          bgm.play();
+        }
+      });
+
+    // Attach mute function to mute button
+    document.querySelector('.mute-btn').addEventListener('click', toggleMute);
+      function toggleMute() {
+        isMuted = !isMuted;
+        bgm.muted = isMuted;  // Properly mute/unmute
+        clickSfx.muted = isMuted;
+        
+        // Update button text
+        document.querySelector('.mute-btn').textContent = isMuted ? '🔇' : '🔊';
+        
+        // Store the new mute state in localStorage
+        localStorage.setItem('isMuted', isMuted);
+      }
+
+      // Card Unlock Interaction
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.dataset.locked = "true"; // Start locked
+        card.classList.add("locked");
+
+        card.addEventListener("click", () => {
+          if (card.dataset.locked === "true") {
+            card.dataset.locked = "false";
+            card.classList.remove("locked");
+            card.classList.add("unlocked");
+            clickSfx.play();
+            alert(`Unlocked: ${card.querySelector("h2").textContent}!`);
+          }
+        });
+      });
+
+      console.log("Ready Player JR?");
+    });
+
+    // Function to retrieve XP from localStorage or set a default value
+    function getXP() {
+      let xp = localStorage.getItem('xp');
+      if (xp === null) {
+        // If no XP is stored, set default value of 2500
+        xp = 2500;
+        localStorage.setItem('xp', xp);
+      }
+      return xp;
+    }
+
+    // Set the XP value to display on the page
+    function updateXPDisplay() {
+      const xp = getXP();
+      document.getElementById('xp-value').textContent = xp;
+    }
+
+    // Function to increase XP and update localStorage and page display
+    function increaseXP(amount) {
+      let currentXP = parseInt(getXP());
+      currentXP += amount;
+      localStorage.setItem('xp', currentXP);
+      updateXPDisplay(); // Update the display after changing XP
+    }
+
+    // Example: Increase XP after 5 seconds (you can trigger this by user actions or events)
+    setTimeout(() => {
+      increaseXP(100);  // Increase XP by 100 after 5 seconds
+    }, 5000);
+
+    // Initialize the XP display when the page loads
+    updateXPDisplay();
+  </script>
+</body>
+</html>

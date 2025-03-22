@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research - Coming Soon</title>
+  
+  <style>
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .message {
+      font-size: 2rem;
+      border: 2px solid cyan;
+      padding: 20px;
+      background: #333;
+      box-shadow: 0 0 15px cyan;
+    }
+    .return-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: cyan;
+      color: #1a1a1a;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .return-button:hover {
+      background-color: #00bcd4;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">Research Section is Coming Soon</div>
+</body>
+ <!-- Return button -->
+ <a href="index.html" class="return-button">Return to Home</a>
+ <script>
+    // Function to retrieve XP from localStorage or set a default value
+    function getXP() {
+      let xp = localStorage.getItem('xp');
+      if (xp === null) {
+        // If no XP is stored, set default value of 2500
+        xp = 2500;
+        localStorage.setItem('xp', xp);
+      }
+      return xp;
+    }
+
+    // Set the XP value to display on the page
+    function updateXPDisplay() {
+      const xp = getXP();
+      document.getElementById('xp-value').textContent = xp;
+    }
+
+    // Function to increase XP and update localStorage and page display
+    function increaseXP(amount) {
+      let currentXP = parseInt(getXP());
+      currentXP += amount;
+      localStorage.setItem('xp', currentXP);
+      updateXPDisplay(); // Update the display after changing XP
+    }
+
+    // Example: Increase XP after 5 seconds (you can trigger this by user actions or events)
+    setTimeout(() => {
+      increaseXP(100);  // Increase XP by 100 after 5 seconds
+    }, 5000);
+
+    // Initialize the XP display when the page loads
+    updateXPDisplay();
+  </script>
+</body>
+</html>
+

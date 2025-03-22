@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JR Portfolio</title>
+  <audio id="bg-music" loop>
+    <source src="Assets/music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      padding: 50px;
+      background: url('stars.gif') repeat;
+      animation: scroll 20s linear infinite;
+      border-bottom: 3px solid #00ffff;
+    }
+    @keyframes scroll { 0% { background-position: 0 0; } 100% { background-position: 100% 0; } }
+    .container {
+      text-align: center;
+      padding: 50px;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid cyan;
+    }
+    .bio {
+      font-size: 12px;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 10px;
+      border-top: 1px solid cyan;
+      border-bottom: 1px solid cyan;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: cyan;
+      text-decoration: none;
+    }
+    .buttons a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      border: 2px solid cyan;
+      text-decoration: none;
+      color: cyan;
+      transition: 0.3s;
+    }
+    .buttons a:hover {
+      background: cyan;
+      color: #1a1a1a;
+    }
+    .hud {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border: 1px solid #00ff00;
+    }
+    .health-bar {
+      width: 100px;
+      height: 10px;
+      background: #ff5555;
+      border: 1px solid #fff;
+    }
+    .health-bar-fill {
+      height: 100%;
+      background: #00ff00;
+      width: 75%; /* Dynamic with JS later */
+    }
+    .mute-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background: #555;
+      border: 1px solid cyan;
+      cursor: pointer;
+    }
+    
+  /* Reset XP Button Style - Positioned at the bottom left */
+  .reset-xp-btn {
+    position: fixed;
+    bottom: 10px; /* 10px from the bottom */
+    left: 10px; /* 10px from the left */
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #ff5555;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .reset-xp-btn:hover {
+    background-color: #1a1a1a;
+    color: #ff5555;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="hud">
+    <p>Player: JR | XP: <span id="xp-value">2500</span></p>
+    <div class="health-bar"><div class="health-bar-fill"></div></div>
+    <p>Mission: Explore Portfolio</p>
+  </div>
+  <button class="mute-btn" onclick="toggleMute()">🔊</button>
+  
+<!-- Reset XP Button -->
+<button class="reset-xp-btn" onclick="resetXP()">Reset XP</button>
+
+  <div class="header">
+    <h1>JR Portfolio</h1>
+    <p>Developer Portfolio</p>
+    <p>AI & Maching Learning | Game Development</p>
+  </div>
+  <div class="container">
+    <img src="Assets/profile.jpg" alt="Profile Picture" class="profile-img">
+    <div class="social-icons">
+      <a href="jamiereichenberger( at ) gmail">📧</a>
+      <a href="https://github.com/jamreichen">🐙</a>
+      <a href="jamreichen.github.io">🔗</a>
+      <a href="https://www.instagram.com/jam_reichen/">📸</a>
+    </div>
+    <div class="bio">
+        Hey there! 👋 Thanks for dropping by! I'm Jamie Reichenberger – a passionate coder and experience creator, always excited to bring fresh ideas to life through code. Whether it's building something from scratch or tweaking it to perfection, I thrive on crafting unique and interactive journeys. Let's create something awesome together! 🚀
+
+
+    </div>
+    <div class="buttons">
+      <a href="projects.html">PROJECTS</a>
+      <a href="https://www.linkedin.com/in/jamiereichenberger/">CAREER</a>
+      <a href="skills.html">SKILLS</a>
+      <a href="research.html">RESEARCH</a>
+    </div>
+  </div>
+  <script>
+    // Function to retrieve XP from localStorage or set a default value
+     // XP and time tracking
+
+ // Function to retrieve XP from localStorage or set a default value
+ function getXP() {
+    let xp = localStorage.getItem('xp');
+    if (xp === null) {
+      // If no XP is stored, set default value of 2500
+      xp = 2500;
+      localStorage.setItem('xp', xp);
+    }
+    return xp;
+  }
+
+// Set the XP value to display on the page
+function updateXPDisplay() {
+  const xp = getXP();
+  document.getElementById('xp-value').textContent = xp;
+}
+
+// Function to increase XP and update localStorage and page display
+function increaseXP(amount) {
+  let currentXP = parseInt(getXP());
+  currentXP += amount;
+  localStorage.setItem('xp', currentXP);
+  updateXPDisplay(); // Update the display after changing XP
+}
+
+// Example: Increase XP after 5 seconds (you can trigger this by user actions or events)
+setTimeout(() => {
+  increaseXP(100);  // Increase XP by 100 after 5 seconds
+}, 5000);
+
+// Initialize the XP display when the page loads
+updateXPDisplay();
+  // Function to reset XP to the default value (2500)
+  function resetXP() {
+    localStorage.setItem('xp', 2500);
+    updateXPDisplay(); // Update the display after resetting XP
+  }
+    console.log("Ready Player JR?");
+
+  </script>
+</body>
+</html>
