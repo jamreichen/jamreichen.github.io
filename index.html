@@ -8,7 +8,7 @@
     <!-- Open Graph -->
 <meta property="og:title" content="Jamie Reichenberger | Senior Curriculum Director & Strategist">
 <meta property="og:description" content="Portfolio showcasing curriculum strategy, instructional design, AI, and educational technology leadership.">
-<meta property="og:image" content="https://jamreichen.github.io/web_preview.png">
+<meta property="og:image" content="https://jamreichen.github.io/Assets/web_preview.png">
 <meta property="og:url" content="https://jamreichen.github.io">
 <meta property="og:type" content="website">
 
@@ -16,12 +16,38 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jamie Reichenberger | Senior Curriculum Director & Strategist">
 <meta name="twitter:description" content="Portfolio showcasing curriculum strategy, instructional design, AI, and educational technology leadership.">
-<meta name="twitter:image" content="https://jamreichen.github.io/web_preview.png">
+<meta name="twitter:image" content="https://jamreichen.github.io/Assets/web_preview.png">
 
   <title>Jamie Reichenberger | Instructional Design & Curriculum Leadership</title>
     <link rel="stylesheet" href="css/styles.css" />
-<!-- Add after your existing css/styles.css link -->
 <link rel="stylesheet" href="css/responsive-fixes.css">
+
+  <style>
+    /* Keep the hero full-width while framing all primary sections beneath it. */
+    #top > section:not(.hero) {
+      width: min(1240px, calc(100% - 64px));
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+    }
+
+    /* Add breathing room between framed sections without changing their internal layouts. */
+    #top > section:not(.hero) + section:not(.hero) {
+      margin-top: 32px;
+    }
+
+    @media (max-width: 760px) {
+      #top > section:not(.hero) {
+        width: calc(100% - 24px);
+      }
+
+      #top > section:not(.hero) + section:not(.hero) {
+        margin-top: 18px;
+      }
+    }
+  </style>
+
 
 <!-- Add mobile-chat-guard.js AFTER chatbot.js -->
 <script src="js/main.js" defer></script>
@@ -36,7 +62,7 @@
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Jamie Reichenberger home">
             <img
-                src="css/logo.png"
+                src="Assets/logo.png"
                 alt="Jamie Reichenberger Logo"
                 class="brand-logo"
             >
@@ -145,7 +171,8 @@
   
 
           <p>
-           At Bethel School of Technology, Jamie led curriculum strategy, faculty development, instructional quality, and program improvement across multiple technical disciplines. Her work included redesigning a 13-course Cybersecurity program, reducing annual program costs by approximately $66,000, strengthening certification pathways, and supporting partnerships with CompTIA, AWS, and GoHackMe.
+          At Bethel School of Technology, Jamie led curriculum strategy, faculty development, instructional quality, and program improvement across multiple technical disciplines. Her work included a comprehensive redesign of a 13-course Cybersecurity program, resulting in a significantly stronger experience for both students and staff. She addressed longstanding bottlenecks and pain points, improved course clarity, progression, and instructional consistency, strengthened certification pathways, and supported partnerships with CompTIA, AWS, and GoHackMe. These improvements also reduced annual program costs by approximately $66,000 while still improving program quality.
+
           </p>
 
           <p>
@@ -214,7 +241,10 @@
           </video>
           <div class="motion-overlay">
             <span class="motion-kicker">Learning design in motion</span>
-            <h2 id="motion-title">Complex ideas become experiences people can move through.</h2>
+   <h2 id="motion-title">
+    Turning <span>complex ideas</span><br>
+    into learning people navigate with <span>confidence.</span>
+</h2>
             <p>I combine curriculum strategy, technical fluency, visual communication, and classroom insight to create learning that feels active, intentional, and usable.</p>
           </div>
         </div>
@@ -320,7 +350,7 @@
   <summary>
     <img
       class="case-cover-image"
-      src="css/gcu-campus.png"
+      src="Assets/gcu-campus.png"
       alt="Grand Canyon University campus"
     >
 
@@ -524,7 +554,7 @@
       <summary>
         <img
           class="case-cover-image"
-          src="css/gcu_course.png"
+          src="Assets/gcu_course.png"
           alt="University learning environment"
         >
 
@@ -686,7 +716,7 @@
   <summary>
     <img
       class="case-cover-image"
-      src="css/bethel_church.jpg"
+      src="Assets/bethel_church.jpg"
       alt="Bethel Church and College campus in Redding, California"
     >
 
@@ -1131,7 +1161,7 @@
   <summary>
     <img
       class="case-cover-image"
-      src="css/excelara_casestudy.jpg"
+      src="Assets/excelara_casestudy.jpg"
       alt="Educators collaborating in a modern learning environment"
     >
 
@@ -1313,12 +1343,19 @@
 
         </div>
 
-        <div class="profile-quote-image">
-            <img
-                src="css/grace_hopper.png"
-                alt="Grace Hopper"
-            >
-        </div>
+<div class="profile-quote-image">
+    <picture>
+        <source
+            media="(max-width: 768px)"
+            srcset="Assets/grace_hopper_mobile.png"
+        >
+
+        <img
+            src="Assets/grace_hopper.png"
+            alt="Grace Hopper"
+        >
+    </picture>
+</div>
 
     </div>
 
