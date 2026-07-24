@@ -49,11 +49,6 @@
   </style>
 
 
-<!-- Add mobile-chat-guard.js AFTER chatbot.js -->
-<script src="js/main.js" defer></script>
-<script src="js/chatbot.js" defer></script>
-<script src="js/mobile-chat-guard.js" defer></script>
-
 
 </head>
 <body>
@@ -1362,63 +1357,179 @@
 </figure>
       </section>
 
-    </main>
+   <section id="CustomPortfolioAssistant" class="assistant-showcase">
+
+  <div class="assistant-showcase-intro" data-reveal>
+    <div>
+      <div class="section-title">Custom AI Experience</div>
+
+      <h2>
+        A portfolio visitors can
+        <span>interview.</span>
+      </h2>
+    </div>
+
+    <p>
+      I designed and developed a custom portfolio assistant that helps visitors
+      explore my curriculum leadership, software engineering, AI work, and
+      professional experience through conversation.
+    </p>
   </div>
-  
+
+  <div class="assistant-showcase-layout">
+
+    <div class="assistant-showcase-main" data-reveal>
+
+      <p class="assistant-showcase-lead">
+        Instead of embedding a generic chatbot, I built a focused retrieval
+        experience around a structured portfolio knowledge base.
+      </p>
+
+      <div class="assistant-process">
+
+        <article>
+          <span>01</span>
+          <div>
+            <h3>Structured knowledge</h3>
+            <p>
+              Portfolio projects, case studies, technical experience, and career
+              outcomes are organized into retrieval-ready content sources.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <span>02</span>
+          <div>
+            <h3>Contextual retrieval</h3>
+            <p>
+              Questions are analyzed, ranked against relevant portfolio content,
+              and answered using the strongest matching information.
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <span>03</span>
+          <div>
+            <h3>Conversational interface</h3>
+            <p>
+              Suggested prompts, follow-up navigation, conversation context, and
+              responsive controls create a guided portfolio interview.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <aside class="assistant-showcase-aside" data-reveal>
+
+      <div class="assistant-stack-label">Technology stack</div>
+
+      <ul>
+        <li>JavaScript ES Modules</li>
+        <li>Client-side RAG architecture</li>
+        <li>Structured Markdown knowledge base</li>
+        <li>Document ranking and retrieval</li>
+        <li>Context-aware conversation state</li>
+        <li>Responsive HTML and CSS</li>
+        <li>Accessible keyboard interaction</li>
+        <li>Zero-cost static deployment</li>
+      </ul>
+
+      <a class="assistant-demo-link" href="#ai-portfolio-widget">
+        Interview the portfolio by clicking the chat icon 
+        <span aria-hidden="true">→</span>
+      </a>
+
+    </aside>
+
+  </div>
+
+  <div class="assistant-showcase-note" data-reveal>
+    <span>Design principle</span>
+    <p>
+      The assistant is not only described in the portfolio—it is a working
+      demonstration of retrieval design, interface development, information
+      architecture, and applied AI prototyping.
+    </p>
+  </div>
 
 </section>
+
+    </main>
+  </div>
+
+  <link rel="stylesheet" href="./css/chatbot.css">
+
   <div id="ai-portfolio-widget">
     <noscript>
-      <div style="position:fixed;right:20px;bottom:90px;z-index:999999;padding:12px 14px;border:1px solid #ccc;background:#fff;border-radius:12px;font:14px Arial,sans-serif;">
-        The portfolio interview requires JavaScript.
-      </div>
+      <div class="ai-noscript">The portfolio interview requires JavaScript.</div>
     </noscript>
-    <div class="ai-panel" id="aiPanel" role="dialog" aria-label="AI Portfolio Interview" aria-hidden="true">
-      <div class="ai-header">
-        <div class="ai-avatar">JR</div>
+
+    <section id="aiPanel" class="ai-panel" hidden aria-hidden="true">
+      <header class="ai-header">
+        <div class="ai-avatar" aria-hidden="true">JR</div>
         <div class="ai-header-copy">
-          <p class="ai-title">Interview Jamie’s Portfolio</p>
-          <p class="ai-subtitle">Ask about AI, curriculum, software, UX, or leadership.</p>
+          <h2 class="ai-title">Interview Jamie’s Portfolio</h2>
+          <p class="ai-subtitle">Jamie's Custom Portfolio Assistant: Ask about AI, curriculum, software, UX, or leadership.</p>
         </div>
-        <button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button>
-      </div>
-  
-      <div class="ai-status" id="aiStatus">
-        <strong>Instant portfolio guide:</strong> answers come directly from Jamie’s portfolio content.
-      </div>
-  
-      <div class="ai-messages" id="aiMessages"></div>
-  
-     <div id="aiChips">
-  <button class="ai-chip" type="button">
-    What makes Jamie’s background distinctive?
+        <button id="aiClose" class="ai-close" type="button" aria-label="Close portfolio assistant">×</button>
+      </header>
+
+      <div id="aiStatus" class="ai-status"></div>
+      <div id="aiMessages" class="ai-messages"></div>
+ <div class="ai-chip-navigation" aria-label="Suggested portfolio questions">
+  <button
+    class="ai-chip-arrow ai-chip-arrow-left"
+    id="aiChipsPrevious"
+    type="button"
+    aria-label="View previous suggested questions"
+    disabled
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6"></path>
+    </svg>
   </button>
 
-  <button class="ai-chip" type="button">
-    How does Jamie approach curriculum design?
-  </button>
+  <div id="aiChips" class="ai-chips"></div>
 
-  <button class="ai-chip" type="button">
-    Tell me about a strong example of her work.
+  <button
+    class="ai-chip-arrow ai-chip-arrow-right"
+    id="aiChipsNext"
+    type="button"
+    aria-label="View more suggested questions"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 6l6 6-6 6"></path>
+    </svg>
   </button>
 </div>
-  
+
       <div class="ai-input-row">
-        <textarea class="ai-input" id="aiInput" rows="1" placeholder="Ask a portfolio question..."></textarea>
-        <button class="ai-send" id="aiSend" type="button" aria-label="Send">➜</button>
+        <textarea id="aiInput" class="ai-input" rows="1" placeholder="Ask a portfolio question..."></textarea>
+        <button id="aiSend" class="ai-send" type="button" aria-label="Send question">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
-      <div class="ai-footer">No API key · No paid database · Portfolio-grounded responses</div>
-    </div>
-  
-    <button class="ai-launcher" id="aiLauncher" type="button" aria-label="Open AI portfolio interview" aria-expanded="false" title="Interview Jamie’s portfolio">
+   <div class="ai-footer">
+    Built with Custom JavaScript RAG • <a href="#CustomPortfolioAssistant" id="howItsBuilt">How? Click here to see tech stack!</a>
+</div>
+    </section>
+
+    <button id="aiLauncher" class="ai-launcher" type="button" aria-label="Open AI portfolio interview" aria-expanded="false" title="Interview Jamie’s portfolio">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7A2.5 2.5 0 0 1 17.5 15H11l-4.5 4v-4A2.5 2.5 0 0 1 4 12.5v-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
         <path d="M8 8h8M8 11h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
+      <span>Interview Jamie</span>
     </button>
   </div>
- </div>
-</section>
+
+  <script type="module" src="./js/app.js"></script>
 
 <button class="mute-btn" onclick="toggleMute()">🔊</button>
 
@@ -1537,7 +1648,6 @@
 </footer>
 
 <script src="js/main.js" defer></script>
-<script src="js/chatbot.js" defer></script>
 
      <audio id="bg-music" loop>
     <source src="Assets/music.mp3" type="audio/mpeg">

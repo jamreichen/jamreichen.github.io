@@ -1,254 +1,77 @@
+
 ---
 title: "Bethel School of Technology"
-type: "case-study"
-url: "#bethel"
+type: "experience"
+url: "#bethel-school-of-technology"
 ---
 
 # Bethel School of Technology
 
 ## Overview
 
-Bethel School of Technology was an online technology bootcamp focused on preparing students for careers in software engineering, data science, cybersecurity, UI/UX design, and other high-demand technology fields.
+Jamie served in multiple instructional leadership and faculty roles at Bethel School of Technology between February 2022 and July 2025. During her tenure, she led curriculum strategy, designed technical education programs, developed assessments and instructional resources, taught software development and data science courses, managed instructional teams, and implemented AI-assisted curriculum development practices. Her work focused on improving curriculum quality, student outcomes, instructional consistency, and operational efficiency across workforce training programs.
 
-The school combined technical training with mentorship, career coaching, project-based learning, and faith-based leadership development to help career changers transition into the technology industry.
+## Problem
 
-During Jamie Reichenberger's tenure, Bethel experienced significant growth in both its academic offerings and instructional infrastructure. Jamie served in multiple leadership roles, progressing from Career Services Mentor to Director of Technical Instruction and later Senior Curriculum Developer.
+Bethel School of Technology provides accelerated workforce training programs designed to prepare adult learners for careers in software engineering, data science, cybersecurity, cloud computing, and related technology fields. As the organization expanded its programs, it needed curriculum that reflected current industry practices, aligned with employer expectations, supported certification pathways, and could be maintained efficiently as technologies evolved.
 
-Jamie contributed to curriculum strategy, instructional leadership, faculty development, quality assurance, academic operations, and the creation of new technical programs that supported thousands of learners.
+The organization also needed consistent instructional standards across multiple programs, scalable assessment development, and curriculum quality assurance processes that could support rapid iteration without sacrificing educational quality.
 
----
+## Jamie's Role
 
-# About Bethel School of Technology
+Jamie served as Director of Technical Instruction, Data Science Instructor, and Subject Matter Expert during her time at Bethel School of Technology.
 
-Bethel School of Technology was recognized for preparing adult learners and career changers for technology careers through an intensive, project-based educational model.
+She personally:
 
-The school emphasized:
+- Led curriculum strategy and program redesign initiatives.
+- Designed new technical curriculum and instructional materials.
+- Developed assessments, labs, projects, and grading rubrics.
+- Evaluated curriculum for instructional quality and technical accuracy.
+- Managed curriculum quality assurance efforts.
+- Taught software development and data science courses.
+- Mentored adult learners throughout their technical training.
+- Collaborated with instructors, subject matter experts, and leadership to improve curriculum consistency.
+- Introduced AI-assisted curriculum development workflows to improve development efficiency and quality assurance.
 
-- Real-world portfolio development
-- Industry-relevant technical skills
-- Small cohort learning
-- Instructor mentorship
-- Career coaching
-- Community-centered learning
-- Practical project experience
+## Approach
 
-Publicly shared outcomes included approximately:
+Jamie approached curriculum development as an iterative engineering process rather than a one-time content creation effort.
 
-- **80% student retention**
-- **86% graduate job placement**
-- Recognition as one of the fastest-growing technology bootcamps serving career changers and adult learners. *(Verify before publishing.)* :contentReference[oaicite:0]{index=0}
+She collaborated with stakeholders to identify program goals, employer expectations, certification objectives, learner needs, and instructional challenges before developing curriculum solutions.
 
----
+She designed courses using measurable learning objectives, project-based assessments, hands-on labs, and competency-based progression. Curriculum revisions were informed by instructor feedback, student outcomes, industry changes, and quality assurance reviews.
 
-# Career Progression
+As AI capabilities matured, Jamie incorporated AI-assisted workflows into curriculum development. She used large language models to accelerate research, assessment drafting, competency mapping, documentation, and curriculum review while maintaining human ownership of instructional decisions and final quality assurance.
 
-Jamie held four different roles during nearly four years with Bethel.
+Throughout the development process, Jamie evaluated curriculum for prerequisite alignment, terminology consistency, assessment validity, accessibility, and technical accuracy.
 
-## Career Services Mentor
+## Outcomes
 
-Jamie began by mentoring students preparing to enter the technology workforce.
+Jamie redesigned a 13-course Cybersecurity program to improve known staff and student pain points, strengthen certification pathways, support partnerships with CompTIA, AWS, and GoHackMe, and reduce annual program costs by approximately **$66,000**.
 
-Responsibilities included:
+She developed curriculum, assessments, labs, and instructional resources across multiple technical disciplines while helping establish consistent instructional design practices throughout the organization.
 
-- Resume reviews
-- LinkedIn optimization
-- Technical interview preparation
-- Mock interviews
-- Career coaching
-- Job search strategy
-- Portfolio reviews
-- Weekly mentoring sessions
+Jamie also introduced AI-assisted curriculum development and quality assurance workflows that improved the efficiency and consistency of curriculum design and review.
 
-This role provided firsthand insight into the challenges students faced after graduation and influenced Jamie's later curriculum philosophy.
+## Frequently Asked Questions
 
----
+### What was Jamie responsible for?
 
-## Director of Technical Instruction
+Jamie was responsible for curriculum strategy, instructional design, assessment development, curriculum quality assurance, technical instruction, program improvement, and faculty collaboration. She also led the redesign of technical programs and implemented AI-assisted curriculum development workflows.
 
-Jamie was promoted to Director of Technical Instruction, leading the technical education department.
+### What programs did Jamie work on?
 
-Responsibilities included:
+Jamie contributed to curriculum and instruction across technical workforce programs, including software development, data science, and cybersecurity. She also redesigned the organization's 13-course Cybersecurity program.
 
-- Managing approximately 20 instructors and mentors
-- Leading curriculum strategy
-- Improving instructional quality
-- Developing instructional standards
-- Building quality assurance processes
-- Designing operational systems
-- Supporting instructor onboarding
-- Standardizing curriculum development
-- Launching new academic initiatives
+### How was success measured?
 
-Programs supported included:
+Success was measured through curriculum quality, instructional consistency, certification alignment, program improvements, and documented organizational outcomes. One documented outcome was reducing annual costs for the redesigned Cybersecurity program by approximately **$66,000** while improving the experience for both staff and students.
 
-- Data Science
-- Full Stack Web Development
-- Cybersecurity
-- UI/UX Design
-- High School Technology Programs
+### What instructional philosophy guided Jamie's work?
 
-Jamie worked closely with leadership to improve consistency across programs while maintaining an engaging student experience.
+Jamie treated curriculum as an evolving product that should continuously improve through learner feedback, instructor collaboration, industry research, and structured quality assurance. She emphasized measurable learning outcomes, authentic projects, competency-based instruction, and AI-assisted workflows that accelerated development while preserving human instructional judgment.
 
----
+### What technologies did Jamie use?
 
-## Senior Curriculum Developer
-
-Jamie later transitioned into curriculum leadership, focusing on designing scalable technical learning experiences.
-
-Responsibilities included:
-
-- Curriculum architecture
-- Learning outcomes
-- Project-based curriculum
-- Assessment development
-- Instructor resources
-- Technical documentation
-- Learning pathways
-- Curriculum modernization
-- Program design
-
-Jamie helped create curriculum for:
-
-- Data Science
-- Full Stack Web Development
-- Artificial Intelligence
-- Data Engineering
-- Software Engineering
-- High School Computer Science
-- AP Computer Science preparation
-
-She also contributed to planning new accredited bachelor's degree programs in technology before the institution ultimately closed.
-
----
-
-# Leadership Philosophy
-
-Jamie viewed curriculum as an interconnected system rather than individual lessons.
-
-Her work focused on improving:
-
-- Student outcomes
-- Instructor consistency
-- Curriculum quality
-- Scalability
-- Operational efficiency
-- Assessment quality
-- Industry alignment
-
-She believes great curriculum succeeds only when instructors, assessments, learning activities, and operational systems work together.
-
----
-
-# Example Initiative: Standardizing Curriculum Development
-
-### Challenge
-
-As the number of technical programs expanded, curriculum quality became increasingly difficult to maintain across multiple instructional teams.
-
-Different instructors often developed learning materials using different approaches, resulting in inconsistent student experiences.
-
-### Jamie's Role
-
-Jamie led efforts to standardize curriculum development through:
-
-- Shared instructional templates
-- Quality assurance rubrics
-- Curriculum lifecycle documentation
-- Instructor standards
-- Assessment guidelines
-- Project templates
-- Course review processes
-
-### Example Outcomes
-
-Replace these examples with actual numbers.
-
-Examples:
-
-- Curriculum review time reduced by **40%**
-- Instructor onboarding reduced from **6 weeks to 3 weeks**
-- Student satisfaction increased from **88% to 94%**
-- Course consistency scores improved by **35%**
-
----
-
-# Example Initiative: Launching New Degree Programs
-
-Jamie helped design curriculum and academic architecture for new bachelor's degree programs including:
-
-- Artificial Intelligence Engineering
-- Data Engineering
-- Software Engineering
-- Full Stack Web Development
-
-Responsibilities included:
-
-- Competency mapping
-- Program sequencing
-- Learning outcomes
-- Assessment planning
-- Accreditation documentation
-- Industry alignment
-- Faculty collaboration
-
-Although these programs were completed academically, they were never launched because the institution closed following leadership decisions.
-
----
-
-# Example Initiative: Improving Instructional Quality
-
-Jamie developed systems to support instructors across multiple technical disciplines.
-
-Projects included:
-
-- Faculty onboarding
-- Teaching standards
-- Curriculum documentation
-- Rubric consistency
-- Assessment review
-- Instructor resources
-- Best-practice documentation
-
-Example metrics to replace:
-
-- Supported **20+ instructors**
-- Standardized **150+ lessons**
-- Reviewed **500+ assessments**
-- Created **200+ instructional resources**
-
----
-
-# AI Before AI Was Mainstream
-
-Even before generative AI became widely available, Jamie approached curriculum development with systems thinking and automation.
-
-As AI tools matured, she integrated them into curriculum workflows to accelerate:
-
-- Lesson planning
-- Assessment generation
-- Rubric drafting
-- Documentation
-- Quality assurance
-- Curriculum maintenance
-
-This experience later became the foundation of her AI-first curriculum development methodology.
-
----
-
-# Lessons Learned
-
-Working at Bethel shaped Jamie's philosophy that effective technical education requires more than good curriculum.
-
-Successful programs require alignment across:
-
-- Curriculum
-- Instruction
-- Faculty support
-- Assessment
-- Career preparation
-- Operations
-- Technology
-- Continuous improvement
-
-This systems perspective continues to influence Jamie's work today.
+Jamie regularly worked with learning management systems, GitHub, ChatGPT, Claude, GitHub Copilot, Cursor, OpenAI APIs, Anthropic APIs, retrieval-augmented generation (RAG), prompt engineering techniques, and AI evaluation workflows to support curriculum development and instructional delivery.
 

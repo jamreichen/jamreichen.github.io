@@ -1,0 +1,10 @@
+{
+  "name": "jamie-portfolio-chatbot-v2",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free, evidence-grounded portfolio chatbot",
+  "scripts": {
+    "check": "node --check js/app.js && node --check js/config.js && node --check js/utils.js && node --check js/markdown.js && node --check js/knowledge.js && node --check js/retrieval.js && node --check js/intents.js && node --check js/composer.js && node --check js/followups.js && node --check js/ui.js"
+  }
+}
