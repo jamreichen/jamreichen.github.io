@@ -215,8 +215,7 @@
       overflow: hidden;
       border-bottom: 1px solid var(--line);
       background-image:
-        url("hero_image.png"),
-        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2000&q=88");
+        url("hero_image.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
