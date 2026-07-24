@@ -4431,7 +4431,7 @@ details.case-study-detail[open] > .case-expanded {
   /* Keep hamburger on left */
   .menu-toggle {
     position: absolute;
-    left: 218px;
+    left: 178px;
     top: 50%;
     transform: translateY(-10%);
     z-index: 100;
