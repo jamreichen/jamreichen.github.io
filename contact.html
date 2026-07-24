@@ -23,41 +23,53 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive-fixes.css">
 </head>
 
 <body>
+<header class="site-header">
 
-  <header class="contact-header">
-    <div class="contact-header-inner">
+  <a class="brand" href="index.html" aria-label="Jamie Reichenberger home">
+    <img
+      src="css/logo.png"
+      alt="Jamie Reichenberger Logo"
+      class="brand-logo"
+    >
 
-      <a
-        href="index.html"
-        class="contact-brand"
-        aria-label="Return to Jamie Reichenberger home page"
-      >
-        <img
-          src="css/logo.png"
-          alt=""
-          class="contact-logo"
-        >
-
-        <div class="contact-brand-copy">
-          <strong>Jamie Reichenberger</strong>
-          <span>Instructional Designer · Curriculum Strategist</span>
-        </div>
-      </a>
-
-      <a
-        href="mailto:upwardcreativeinfo@gmail.com"
-        class="header-email"
-      >
-        Email Jamie
-        <span aria-hidden="true">↗</span>
-      </a>
-
+    <div class="brand-copy">
+      <strong>Jamie Reichenberger</strong>
+      <span>Senior Curriculum Director &amp; Strategist</span>
     </div>
-  </header>
+  </a>
+
+  <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Case Studies</a>
+    <a href="index.html#case-studies">Experience</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="index.html#skills">Capabilities</a>
+    <a class="active" href="contact.html">Contact</a>
+  </nav>
+
+  <a class="resume-btn magnetic" href="contact.html">
+    Let's Connect
+    <span aria-hidden="true">→</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="primaryNav"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</header>
 
   <main class="contact-page">
 
@@ -225,6 +237,55 @@
     </a>
 
   </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
 
+    if (!menuToggle || !navigation) return;
+
+    const closeMenu = () => {
+      navigation.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("is-open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        navigation.classList.contains("is-open") &&
+        !navigation.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1180) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  });
+</script>
 </body>
 </html>
