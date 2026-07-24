@@ -4500,3 +4500,29 @@ details.case-study-detail[open] > .case-expanded {
     display: none;
   }
 }
+/* ==========================================
+   MOBILE & TABLET
+   Hide chatbot and drawing tools
+========================================== */
+
+@media (max-width: 1180px) {
+
+  /* AI Portfolio Interview */
+  #ai-portfolio-widget,
+  .ai-launcher,
+  .ai-panel {
+    display: none !important;
+  }
+
+  /* Drawing feature */
+  .drawing-toggle,
+  .drawing-toolbar,
+  #pageCanvas {
+    display: none !important;
+  }
+
+  body.drawing-mode #pageCanvas {
+    display: none !important;
+    pointer-events: none !important;
+  }
+}
