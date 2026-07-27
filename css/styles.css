@@ -4502,7 +4502,7 @@ details.case-study-detail[open] > .case-expanded {
    Hide chatbot and drawing tools
 ========================================== */
 
-@media (max-width: 1180px) {
+@media (max-width: 768px) {
 
   /* AI Portfolio Interview */
   #ai-portfolio-widget,
@@ -4844,49 +4844,4 @@ details.case-study-detail[open] > .case-expanded {
   color: rgba(255,255,255,.72);
   font-size: 15px;
   line-height: 1.75;
-}
-
-@media (max-width: 900px) {
-  .assistant-showcase-intro,
-  .assistant-showcase-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .assistant-showcase-intro {
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .assistant-showcase-aside {
-    padding-top: 32px;
-    padding-left: 0;
-    border-top: 1px solid rgba(255,255,255,.16);
-    border-left: 0;
-  }
-}
-
-@media (max-width: 620px) {
-  .assistant-showcase {
-    padding: 82px 5vw;
-  }
-
-  .assistant-showcase-intro {
-    padding-bottom: 44px;
-  }
-
-  .assistant-showcase-layout {
-    padding-top: 44px;
-  }
-
-  .assistant-process article {
-    grid-template-columns: 44px minmax(0, 1fr);
-    gap: 15px;
-  }
-
-  .assistant-showcase-note {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 44px;
-    padding: 24px;
-  }
 }
