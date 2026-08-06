@@ -6430,6 +6430,66 @@ body.spoof-detective-standalone {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Landing-page scrolling repair
+   Use the document as the only vertical scroll container. This avoids the
+   nested scrollbar/clipped viewport caused by a 100vh shell plus an auto-
+   scrolling main region.
+   -------------------------------------------------------------------------- */
+#spoof-detective-embed {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+body.spoof-detective-standalone {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#spoof-detective-embed .sd-classic-app {
+  min-height: 100svh;
+  overflow: visible;
+}
+
+#spoof-detective-embed .sd-classic-shell {
+  min-height: 100svh;
+  height: auto;
+  overflow: visible;
+}
+
+#spoof-detective-embed .sd-classic-main {
+  flex: 0 0 auto;
+  min-height: calc(100svh - 64px);
+  justify-content: flex-start;
+  overflow: visible;
+  padding-top: clamp(54px, 8vh, 96px);
+  padding-bottom: clamp(52px, 8vh, 92px);
+}
+
+#spoof-detective-embed .sd-classic-hero {
+  flex: 0 0 auto;
+}
+
+#spoof-detective-embed .sd-classic-agent {
+  position: fixed;
+  bottom: 24px;
+}
+
+@media (max-height: 760px) and (min-width: 640px) {
+  #spoof-detective-embed .sd-classic-agent {
+    position: absolute;
+    top: 420px;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  #spoof-detective-embed .sd-classic-main {
+    padding-top: 42px;
+    padding-bottom: 48px;
+  }
+}
+
 </style>
 <script>
 /*
