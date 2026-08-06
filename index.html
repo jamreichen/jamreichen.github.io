@@ -46,9 +46,42 @@
         margin-top: 18px;
       }
     }
+  
+    /* Featured instructional-design demo card */
+    .project-card.project-demo {
+      grid-column: span 1;
+    }
+
+    .thumb-cybersecurity {
+      background-image:
+        linear-gradient(120deg, rgba(7, 31, 38, .88), rgba(19, 87, 91, .42)),
+        radial-gradient(circle at 75% 25%, rgba(242, 176, 127, .28), transparent 28%),
+        linear-gradient(135deg, #123f45, #0b2429);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .thumb-cybersecurity::after {
+      content: "01  10  11  00  01  10";
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      z-index: 1;
+      width: 145px;
+      color: rgba(255,255,255,.34);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      letter-spacing: .18em;
+      text-align: right;
+      white-space: normal;
+    }
+
+    @media (min-width: 1181px) {
+      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
   </style>
-
-
 
 </head>
 <body>
@@ -70,6 +103,7 @@
       <nav class="nav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a class="active" href="#projects">Case Studies</a>
+        <a href="cybersecurity_curriculum_design.html">CYBERSECURITY CURRICULUM DESIGN</a>
         <a href="#case-studies">Experience</a>
         <a href="#approach">Approach</a>
         <a href="#skills">Capabilities</a>
@@ -110,11 +144,11 @@
   <div class="profile-shell">
 
     <div class="profile-header">
-      <p class="profile-kicker">What is Jamie Reichenberger known for?</p>
+      <p class="profile-kicker">What I’m known for</p>
 
       <h2 id="profile-title">
         Curriculum leadership shaped by engineering  
-        <span>and passion for excellence.</span>
+        <span>and a passion for excellence.</span>
       </h2>
     </div>
 
@@ -154,33 +188,55 @@
 
       <div class="profile-content">
         <p class="profile-intro">
-          Jamie Reichenberger is a curriculum and technology leader working at
-          the intersection of software engineering, higher education,
-          instructional design, machine learning, and artificial intelligence.
+          Curriculum and technology leader working at the intersection of
+          software engineering, higher education, instructional design, machine
+          learning, and artificial intelligence.
         </p>
 
         <div class="profile-copy">
           <p>
-            Her work has spanned Data Science, AI and Machine Learning, Full-Stack Development, Data Engineering, Cybersecurity, Game Development, Game Design, and Human-Computer Interaction. She has contributed to accredited bachelor’s and master’s degree programs, supported more than 50 courses, led teams of 20+ faculty and staff, directly taught more than 200 students, and helped scale career and academic support for more than 1,600 learners and alumni.
+            My work has spanned Data Science, AI and Machine Learning,
+            Full-Stack Development, Data Engineering, Cybersecurity, Game
+            Development, Game Design, and Human-Computer Interaction. I have
+            contributed to accredited bachelor’s and master’s degree programs,
+            supported more than 50 courses, led teams of 20+ faculty and staff,
+            directly taught more than 200 students, and helped scale career and
+            academic support for more than 1,600 learners and alumni.
           </p>
-  
 
           <p>
-          At Bethel School of Technology, Jamie led curriculum strategy, faculty development, instructional quality, and program improvement across multiple technical disciplines. Her work included a comprehensive redesign of a 13-course Cybersecurity program, resulting in a significantly stronger experience for both students and staff. She addressed longstanding bottlenecks and pain points, improved course clarity, progression, and instructional consistency, strengthened certification pathways, and supported partnerships with CompTIA, AWS, and GoHackMe. These improvements also reduced annual program costs by approximately $66,000 while still improving program quality.
-
+            At Bethel School of Technology, I led curriculum strategy, faculty
+            development, instructional quality, and program improvement across
+            multiple technical disciplines. My work included a comprehensive
+            redesign of a 13-course Cybersecurity program that addressed
+            longstanding bottlenecks, improved course clarity and progression,
+            strengthened instructional consistency and certification pathways,
+            and supported partnerships with CompTIA, AWS, and GoHackMe. These
+            improvements reduced annual program costs by approximately $66,000
+            while strengthening the experience for students and staff.
           </p>
 
           <p>
-           She also helped drive measurable learner and career outcomes, including retention rates of up to 90%, an 85% reported job-hire rate, and a 65% increase in salary outcomes. During this period, Bethel received national recognition from Newsweek, Fortune Education, SwitchUp, and University Research & Review for its technical programs, workforce preparation, and faith-based learning model.
+            I also helped drive measurable learner and career outcomes,
+            including retention rates of up to 90%, an 85% reported job-hire
+            rate, and a 65% increase in salary outcomes. During this period,
+            Bethel received national recognition from Newsweek, Fortune
+            Education, SwitchUp, and University Research &amp; Review for its
+            technical programs, workforce preparation, and faith-based learning
+            model.
           </p>
+
           <p>
-            Jamie’s engineering background includes work with PayPal, Autodesk, and Continuant. That experience continues to shape her belief that strong learning programs should be intentional, scalable, measurable, and designed around the people who use them.
+            My engineering background includes work with PayPal, Autodesk, and
+            Continuant. That experience continues to shape my belief that strong
+            learning programs should be intentional, scalable, measurable, and
+            designed around the people who use them.
           </p>
-      
+
           <p>
-            Today, she develops AI-powered workflows, educational technologies,
-            and technical learning experiences that help students, educators,
-            and organizations adapt to an AI-native future.
+            Today, I develop AI-powered workflows, educational technologies, and
+            technical learning experiences that help students, educators, and
+            organizations adapt to an AI-native future.
           </p>
         </div>
 
@@ -217,7 +273,7 @@
             href="contact.html"
             class="profile-link profile-link-secondary"
           >
-            Contact Jamie
+            Contact Me
             <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -259,14 +315,14 @@
                 <span>Higher Education Consulting</span>
                 <strong>Program design across game development, game design, and HCI</strong>
                 <div class="project-hover-copy">
-                  Consulting and curriculum development for GCU’s BA in Game Design, BS in Game Development, and MS in Human-Computer Interaction.
+                  My consulting and curriculum development work supported GCU’s BA in Game Design, BS in Game Development, and MS in Human-Computer Interaction.
                 </div>
               </div>
             </div>
             <div class="project-body">
               <h3>GCU Game Development &amp; HCI Programs Curriculum</h3>
               <p>
-                Contributed instructional design and subject-matter expertise to degree programs spanning game design, game development, and human-computer interaction.
+                I contributed instructional design and subject-matter expertise to degree programs spanning game design, game development, and human-computer interaction.
               </p>
               <a class="text-link" href="#gcu-programs">View Case Study &nbsp;→</a>
             </div>
@@ -279,14 +335,14 @@
                 <span>Concept to Classroom</span>
                 <strong>A full-circle view of course design and delivery</strong>
                 <div class="project-hover-copy">
-                  Helped write a GCU course, then later taught it as an adjunct instructor—observing the experience from initial concept through live execution.
+                  I helped write a GCU course and later taught it as an adjunct instructor, allowing me to observe the experience from initial concept through live execution.
                 </div>
               </div>
             </div>
             <div class="project-body">
               <h3>GCU Instructor: From Course Concept to Classroom</h3>
               <p>
-                Experienced one course through its complete lifecycle: planning, curriculum creation, implementation, facilitation, learner feedback, and refinement.
+                I experienced one course through its complete lifecycle: planning, curriculum creation, implementation, facilitation, learner feedback, and refinement.
               </p>
               <a class="text-link" href="#course-lifecycle">View Case Study &nbsp;→</a>
             </div>
@@ -299,18 +355,40 @@
                 <span>Technical Curriculum Leadership</span>
                 <strong>Multi-program curriculum improvement and new program development</strong>
                 <div class="project-hover-copy">
-                  Led and supported curriculum across UI/UX, cybersecurity, full-stack development, Data
-            Science (AI/ML), and high-school computer science.
+                  I led and supported curriculum across UI/UX, cybersecurity,
+                  full-stack development, Data Science (AI/ML), and high-school
+                  computer science.
                 </div>
               </div>
             </div>
             <div class="project-body">
               <h3>Bethel School of Technology Curriculum Leadership</h3>
               <p>
-                Improved established technical programs, led a high-school AP Computer Science preparation launch, and developed new bachelor-level program pathways.
+                I improved established technical programs, led the launch of a high-school AP Computer Science preparation pathway, and developed new bachelor-level program pathways.
               </p>
               <a class="text-link" href="#bst-curriculum">View Case Study &nbsp;→</a>
             </div>
+          </article>
+
+          <article class="project-card project-demo" data-reveal>
+            <div class="project-thumb thumb-cybersecurity">
+              <div class="project-icon" aria-hidden="true">⌁</div>
+              <div class="project-meta">
+                <span>Instructional Design Demonstration</span>
+                <strong>Foundations of Cybersecurity: from learner analysis to evaluation</strong>
+                <div class="project-hover-copy">
+                  A standalone demonstration showing how I apply ADDIE, constructive alignment, scenario-based learning, assessment design, accessibility, and continuous improvement.
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+             <h3>Foundations of Cybersecurity</h3>
+<p>
+  Explore a standards-aligned cybersecurity course proposal spanning 20 modules, safe hands-on labs, authentic assessments, AI and privacy concepts, and a capstone organizational security challenge. Review the curriculum architecture, jurisdiction research, downloadable planning resources, and an interactive phishing-analysis prototype.
+</p>
+<a class="text-link" href="cybersecurity_curriculum_design.html">
+  Explore the Course Proposal &nbsp;→
+</a>
           </article>
         </div>
 
@@ -363,8 +441,8 @@
       </h3>
 
       <p class="case-hover-preview">
-        Collaborated with university leadership, instructional designers,
-        and subject matter experts to design three technology degree programs—
+        I collaborated with university leadership, instructional designers,
+        and subject-matter experts to design three technology degree programs—
         from early program concepts through curriculum mapping, course design,
         and industry-aligned learning experiences.
       </p>
@@ -410,7 +488,7 @@
         <span>End-to-end curriculum design</span>
 
         <p>
-          Contributed throughout the entire curriculum development lifecycle,
+          I contributed throughout the entire curriculum development lifecycle,
           from initial program concept and competency mapping through detailed
           course planning, assessment design, and development of multiple
           production-ready university courses.
@@ -442,7 +520,7 @@
         <li>Reviewed curriculum for technical accuracy, coherence, and alignment across programs.</li>
       </ul>
 
-      <h4>Programs supported</h4>
+      <h4>Programs I supported</h4>
 
       <p>
         The curriculum work contributed to the development of three technology
@@ -507,7 +585,7 @@
         <li>M.S. Human-Computer Interaction</li>
       </ul>
 
-      <strong>Curriculum Responsibilities</strong>
+      <strong>My Curriculum Responsibilities</strong>
 
       <ul>
         <li>Program architecture</li>
@@ -520,7 +598,7 @@
         <li>SME review</li>
       </ul>
 
-      <strong>Collaborated With</strong>
+      <strong>Who I Collaborated With</strong>
 
       <ul>
         <li>Instructional Designers</li>
@@ -604,9 +682,9 @@
       <span>Full-cycle perspective</span>
 
       <p>
-        Teaching the completed course revealed how pacing, instructions,
-        assessments, technical setup, faculty guidance, and learner-support
-        resources performed in a live online classroom.
+        By teaching the completed course, I could evaluate how pacing,
+        instructions, assessments, technical setup, faculty guidance, and
+        learner-support resources performed in a live online classroom.
       </p>
     </div>
 
@@ -644,6 +722,14 @@
 
    
     <h4>Recognized for proactive guidance</h4>
+     <div class="case-testimonial">
+      <p>
+        “I am pleased to inform you that your classroom was recently reviewed, and it was found to demonstrate outstanding teaching practices. 
+        Your efforts were particularly noted for effectively incorporating the four main foundational principles of teaching: classroom management, engagement, feedback, and responsiveness.”
+      </p>
+
+      <span>Dr. Randy Gibb, Provost</span>
+    </div>
 
     <div class="case-testimonial">
       <p>
@@ -684,7 +770,7 @@
       <li>Continuous improvement</li>
     </ul>
 
-    <strong>courses taught as Adjunct Instructor</strong>
+    <strong>Courses I Taught as an Adjunct Instructor</strong>
 
     <ul>
       <li>GDT-115: Introduction to Game Engines</li>
@@ -692,7 +778,7 @@
       <li>GDT-120: Virtual Reality and Game Development</li>
     </ul>
 
-    <strong>Instructional strengths</strong>
+    <strong>My Instructional Strengths</strong>
 
     <ul>
       <li>Timely learner support</li>
@@ -728,9 +814,9 @@
       </h3>
 
       <p class="case-hover-preview">
-        Led technical curriculum, instructional teams, career-readiness programs,
-        industry partnerships, and new academic pathways across Data
-            Science (AI/ML), Full-Stack Development, UI/UX, and Cybersecurity.
+        I led technical curriculum, instructional teams, career-readiness
+        programs, industry partnerships, and new academic pathways across Data
+        Science (AI/ML), Full-Stack Development, UI/UX, and Cybersecurity.
       </p>
 
       <span class="case-read-more">
@@ -764,7 +850,7 @@
             <span>Leadership Scope</span>
 
             <p>
-                Combined curriculum strategy, faculty leadership, technical
+                I combined curriculum strategy, faculty leadership, technical
                 instruction, career readiness, and continuous improvement across
                 multiple technology programs.
             </p>
@@ -844,9 +930,10 @@
       </p>
 
       <p>
-        The pilot launched with 25 students with 100% customer satisfaction rating and incorporated project-based
-        learning, applied coding experiences, and preparation aligned with
-        AP Computer Science Principles.
+        I launched the pilot with 25 students and achieved a 100% customer
+        satisfaction rating. The course incorporated project-based learning,
+        applied coding experiences, and preparation aligned with AP Computer
+        Science Principles.
       </p>
 
   
@@ -879,10 +966,10 @@
 
 
       <p>
-        I helped design and scale our career-support programs, focusing technical interview preparation, for students and a
-        population of more than 1,600 alumni across Full-Stack Development,
-        Data
-            Science (AI/ML), UI/UX, and Cybersecurity.
+        I helped design and scale career-support programs for students and
+        more than 1,600 alumni across Full-Stack Development, Data Science
+        (AI/ML), UI/UX, and Cybersecurity, with a focus on technical interview
+        preparation.
       </p>
 
       <div class="case-metric-grid">
@@ -961,9 +1048,10 @@
       <h4>Building future degree programs</h4>
 
         <p>
-            Beyond existing bootcamp programs, I owned curriculum strategy for
-            proposed accredited associate's degrees in Data Science (AI/ML) as well as bachelor's degrees in
-            Data Engineering, and Full-Stack Web Development. This work included competency mapping,
+            Beyond the existing bootcamp programs, I owned curriculum strategy
+            for a proposed accredited associate degree in Data Science (AI/ML),
+            as well as proposed bachelor’s degrees in Data Engineering and
+            Full-Stack Web Development. This work included competency mapping,
             program outcomes, course sequencing, assessments, and project-based
             curriculum design.
         </p>
@@ -993,7 +1081,7 @@
         <span>Selected impact</span>
 
         <p>
-          Connected curriculum strategy, technical instruction, faculty
+          I connected curriculum strategy, technical instruction, faculty
           development, certification pathways, career readiness, employer
           relationships, alumni engagement, and program operations to strengthen
           the full learner journey from enrollment through employment.
@@ -1028,7 +1116,7 @@
     </div>
 
     <aside class="case-aside">
-      <strong>Roles</strong>
+      <strong>My Roles</strong>
 
       <ul>
         <li>Director of Technical Instruction</li>
@@ -1037,7 +1125,7 @@
         <li>Career Services Mentor</li>
       </ul>
 
-      <strong>Bootcamp Programs led</strong>
+      <strong>Bootcamp Programs I Led</strong>
 
       <ul>
         <li>Data Science</li>
@@ -1047,12 +1135,12 @@
         <li>High-School Computer Science</li>
       </ul>
 
-      <strong>Led team development for new programs:</strong>
+      <strong>New Programs I Helped Develop</strong>
       <li>A.S. Data Science</li>
       <li>B.S. Data Engineering</li>
       <li>B.S. Full-Stack Web Development</li>
 
-      <strong>Leadership areas</strong>
+      <strong>My Leadership Areas</strong>
 
       <ul>
         <li>ADDIE-based curriculum development</li>
@@ -1068,10 +1156,10 @@
       <strong>Selected outcomes</strong>
 
       <ul>
-        <li>Directed 20+ employees, 5 programs, 50+ courses</li>
-        <li>Directly taught: 200+ students</li>
-        <li>Influenced through curriculum, instructor leadership, and program oversight: 600–1,000+ adult learners</li>
-        <li>1,600+ alumni supported</li>
+        <li>I directed 20+ employees across 5 programs and 50+ courses</li>
+        <li>I directly taught more than 200 students</li>
+        <li>My curriculum, instructor leadership, and program oversight influenced 600–1,000+ adult learners</li>
+        <li>I helped support more than 1,600 alumni</li>
         <li>59% reduction in time to hire</li>
         <li>49-day average time to hire</li>
         <li>65% increase in salary outcomes</li>
@@ -1173,7 +1261,7 @@
       </h3>
 
       <p class="case-hover-preview">
-        Supported digital experiences, educational technology, enrollment
+        I supported digital experiences, educational technology, enrollment
         systems, and communications designed to help Christian school founders
         move from early vision to sustainable launch.
       </p>
@@ -1189,7 +1277,7 @@
   <div class="case-expanded">
     <div class="case-main">
       <p>
-        Supported Excelara’s educational technology and digital experience
+        I supported Excelara’s educational technology and digital experience
         initiatives during a period of organizational growth. My work connected
         website development, enrollment communication, analytics, automation,
         content systems, and user experience to help families and school leaders
@@ -1197,17 +1285,17 @@
       </p>
 
       <p>
-        The work included improving digital pathways for American Faith Academy,
+        My work included improving digital pathways for American Faith Academy,
         virtual events, tuition and program information, application experiences,
         lead nurturing, CRM-supported communication, and online resources for
         prospective families and education partners.
       </p>
 
       <p>
-        This experience required balancing instructional goals, organizational
-        needs, technical implementation, and audience communication. The result
-        was a more connected digital ecosystem supporting school founders,
-        educators, parents, and students.
+        I balanced instructional goals, organizational needs, technical
+        implementation, and audience communication to create a more connected
+        digital ecosystem supporting school founders, educators, parents, and
+        students.
       </p>
 
       <div class="case-testimonial">
@@ -1236,7 +1324,7 @@
     </div>
 
     <aside class="case-aside">
-      <strong>Focus areas</strong>
+      <strong>My Focus Areas</strong>
 
       <ul>
         <li>Educational technology implementation</li>
@@ -1323,12 +1411,12 @@
         <div class="profile-quote-text">
 
             <p class="profile-quote-intro">
-                One quote has consistently shaped Jamie's approach to leadership, curriculum design, and embracing innovation:
+                One quote has consistently shaped my approach to leadership, curriculum design, and embracing innovation:
             </p>
 
             <blockquote>
-                “The most dangerous phrase in the language is,
-                <span>‘We've always done it this way.’</span>
+                “The most dangerous phrase in the English language is,
+                <span>‘We have always done it this way.’</span>
             </blockquote>
 
             <figcaption>
@@ -1356,7 +1444,7 @@
 
 </figure>
       </section>
-
+<!--
    <section id="CustomPortfolioAssistant" class="assistant-showcase">
 
   <div class="assistant-showcase-intro" data-reveal>
@@ -1364,8 +1452,8 @@
       <div class="section-title">Custom AI Experience</div>
 
       <h2>
-        A portfolio visitors can
-        <span>interview.</span>
+        An interactive portfolio visitors can
+        <span>explore through conversation.</span>
       </h2>
     </div>
 
@@ -1439,7 +1527,7 @@
       </ul>
 
       <a class="assistant-demo-link" href="#ai-portfolio-widget">
-        Interview the portfolio by clicking the chat icon 
+        Explore my portfolio by clicking the chat icon 
         <span aria-hidden="true">→</span>
       </a>
 
@@ -1461,8 +1549,8 @@
     </main>
   </div>
 
-  <link rel="stylesheet" href="./css/chatbot.css">
-
+  <link rel="stylesheet" href="./css/chatbot.css"> -->
+<!--
   <div id="ai-portfolio-widget">
     <noscript>
       <div class="ai-noscript">The portfolio interview requires JavaScript.</div>
@@ -1472,8 +1560,8 @@
       <header class="ai-header">
         <div class="ai-avatar" aria-hidden="true">JR</div>
         <div class="ai-header-copy">
-          <h2 class="ai-title">Interview Jamie’s Portfolio</h2>
-          <p class="ai-subtitle">Jamie's Custom Portfolio Assistant: Ask about AI, curriculum, software, UX, or leadership.</p>
+          <h2 class="ai-title">Explore My Portfolio</h2>
+          <p class="ai-subtitle">Ask me about AI, curriculum, software, UX, or leadership.</p>
         </div>
         <button id="aiClose" class="ai-close" type="button" aria-label="Close portfolio assistant">×</button>
       </header>
@@ -1508,7 +1596,7 @@
 </div>
 
       <div class="ai-input-row">
-        <textarea id="aiInput" class="ai-input" rows="1" placeholder="Ask a portfolio question..."></textarea>
+        <textarea id="aiInput" class="ai-input" rows="1" placeholder="Ask me about my work..."></textarea>
         <button id="aiSend" class="ai-send" type="button" aria-label="Send question">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1520,18 +1608,26 @@
 </div>
     </section>
 
-    <button id="aiLauncher" class="ai-launcher" type="button" aria-label="Open AI portfolio interview" aria-expanded="false" title="Interview Jamie’s portfolio">
+    <button id="aiLauncher" class="ai-launcher" type="button" aria-label="Open AI portfolio assistant" aria-expanded="false" title="Explore my portfolio">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7A2.5 2.5 0 0 1 17.5 15H11l-4.5 4v-4A2.5 2.5 0 0 1 4 12.5v-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
         <path d="M8 8h8M8 11h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
-      <span>Interview Jamie</span>
+      <span>Ask Me</span>
     </button>
   </div>
-
+-->
   <script type="module" src="./js/app.js"></script>
 
-<button class="mute-btn" onclick="toggleMute()">🔊</button>
+<button
+  class="mute-btn"
+  type="button"
+  aria-label="Mute background music"
+  aria-pressed="false"
+  title="Mute background music"
+>
+  🔊
+</button>
 
 <canvas id="pageCanvas" aria-label="Page drawing canvas"></canvas>
 
@@ -1615,7 +1711,7 @@
         class="site-footer-button"
         href="contact.html"
       >
-        Contact Jamie
+        Contact Me
         <span aria-hidden="true">→</span>
       </a>
 
@@ -1649,10 +1745,15 @@
 
 <script src="js/main.js" defer></script>
 
-     <audio id="bg-music" loop>
-    <source src="Assets/music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-  <audio id="click-sfx" src="Assets/click.mp3"></audio> 
+  <audio id="bg-music" autoplay loop preload="auto">
+  <source src="Assets/music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio
+  id="click-sfx"
+  src="Assets/click.mp3"
+  preload="auto"
+></audio>
 </body>
 </html>

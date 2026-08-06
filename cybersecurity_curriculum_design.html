@@ -1,0 +1,4266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Foundations of Cybersecurity course proposal by Jamie Reichenberger — a standards-informed, evidence-centered, safe and applied cybersecurity learning pathway.">
+  <meta name="theme-color" content="#0b2f35">
+
+  <meta property="og:title" content="Foundations of Cybersecurity | Course Proposal">
+  <meta property="og:description" content="A five-unit, twenty-module cybersecurity course proposal with standards research, safe performance tasks, and interactive learning experiences.">
+  <meta property="og:type" content="website">
+
+  <title>Foundations of Cybersecurity | Jamie Reichenberger</title>
+
+  <style>
+    :root {
+      --ink-950: #071f26;
+      --ink-900: #0b2f35;
+      --ink-850: #103b41;
+      --ink-800: #15484d;
+      --teal-700: #13575b;
+      --teal-600: #1b6b6d;
+      --teal-500: #2b8180;
+      --teal-200: #b9d9d3;
+      --teal-100: #dcebe7;
+      --peach-500: #f2b07f;
+      --peach-300: #f6c9a8;
+      --cream-100: #f7f3eb;
+      --cream-50: #fcfaf5;
+      --paper: #fffefb;
+      --white: #ffffff;
+      --text: #263b40;
+      --muted: #667a7e;
+      --line: rgba(11, 47, 53, 0.15);
+      --line-dark: rgba(255, 255, 255, 0.15);
+      --shadow-sm: 0 10px 30px rgba(7, 31, 38, 0.08);
+      --shadow-md: 0 24px 70px rgba(7, 31, 38, 0.14);
+      --shadow-lg: 0 38px 100px rgba(3, 20, 25, 0.24);
+      --radius-sm: 12px;
+      --radius-md: 22px;
+      --radius-lg: 34px;
+      --content: 1240px;
+      --header-height: 86px;
+      --ease: cubic-bezier(.2, .72, .2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 30px);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 4%, rgba(242, 176, 127, 0.12), transparent 24rem),
+        linear-gradient(180deg, var(--cream-50), var(--paper) 45%, var(--cream-100));
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    ::selection {
+      color: var(--white);
+      background: var(--teal-600);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    iframe:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--peach-500);
+      outline-offset: 4px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--ink-950);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+    }
+
+    h3 {
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink-950);
+      border-radius: 10px;
+      transform: translateY(-150%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      height: 3px;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    .scroll-progress::after {
+      content: "";
+      display: block;
+      width: var(--scroll-progress, 0%);
+      height: 100%;
+      background: linear-gradient(90deg, var(--peach-500), var(--teal-500));
+      box-shadow: 0 0 18px rgba(242, 176, 127, 0.72);
+      transition: width 80ms linear;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      min-height: var(--header-height);
+      padding: 14px clamp(18px, 3.4vw, 56px);
+      border-bottom: 1px solid rgba(11, 47, 53, 0.09);
+      background: rgba(252, 250, 245, 0.88);
+      backdrop-filter: blur(22px) saturate(130%);
+      transition: box-shadow 220ms ease, background 220ms ease;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(255, 254, 251, 0.94);
+      box-shadow: 0 10px 35px rgba(7, 31, 38, 0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      position: relative;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      color: var(--cream-50);
+      background: linear-gradient(145deg, var(--ink-900), var(--teal-600));
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(11, 47, 53, 0.2);
+      overflow: hidden;
+    }
+
+    .brand-logo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--cream-50);
+    }
+
+    .brand-logo.is-missing {
+      display: none;
+    }
+
+    .brand-fallback {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: -0.06em;
+    }
+
+    .brand-copy {
+      display: grid;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-copy strong {
+      color: var(--ink-950);
+      font-size: 0.96rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-copy span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.69rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 2vw, 28px);
+      padding: 0 28px;
+    }
+
+    .nav a {
+      position: relative;
+      color: #53696d;
+      font-size: 0.78rem;
+      font-weight: 720;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      transition: color 180ms ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 2px;
+      background: var(--peach-500);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 220ms var(--ease);
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--ink-950);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .resume-btn,
+    .primary-btn,
+    .secondary-btn,
+    .outline-btn,
+    .site-footer-button,
+    .frame-action,
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 800;
+      line-height: 1;
+      transition: transform 180ms var(--ease), box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .resume-btn {
+      color: var(--white);
+      background: var(--ink-900);
+      box-shadow: 0 10px 25px rgba(11, 47, 53, 0.16);
+      font-size: 0.8rem;
+    }
+
+    .resume-btn:hover,
+    .primary-btn:hover,
+    .site-footer-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(11, 47, 53, 0.22);
+    }
+
+    .menu-toggle {
+      display: none;
+      align-content: center;
+      justify-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--paper);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--ink-900);
+      border-radius: 99px;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(840px, calc(100vh - var(--header-height)));
+      padding: clamp(60px, 8vw, 110px) clamp(22px, 5vw, 80px);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 78% 15%, rgba(242, 176, 127, 0.16), transparent 22rem),
+        linear-gradient(135deg, var(--ink-950), var(--ink-900) 54%, #0a3c42);
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(120deg, black, transparent 75%);
+      animation: grid-drift 18s linear infinite;
+    }
+
+    .hero::after {
+      content: "01  10  11  00  01  10  00  11  01  10  01  00";
+      position: absolute;
+      right: clamp(-60px, 2vw, 30px);
+      bottom: 24px;
+      z-index: -1;
+      width: 340px;
+      color: rgba(255, 255, 255, 0.09);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 1rem;
+      line-height: 2.2;
+      letter-spacing: 0.32em;
+      text-align: right;
+      word-spacing: 1.2em;
+      transform: rotate(-6deg);
+    }
+
+    .hero-inner {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr);
+      gap: clamp(48px, 7vw, 110px);
+      align-items: center;
+    }
+
+    .eyebrow,
+    .section-title,
+    .motion-kicker,
+    .profile-kicker,
+    .site-footer-label,
+    .card-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--peach-500);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .section-title::before,
+    .motion-kicker::before,
+    .profile-kicker::before,
+    .card-kicker::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 28px;
+      color: var(--white);
+      font-size: clamp(3.3rem, 7vw, 7.4rem);
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 em {
+      display: block;
+      margin-top: 12px;
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.56em;
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .hero .intro {
+      max-width: 690px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: clamp(1rem, 1.55vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .primary-btn {
+      color: var(--ink-950);
+      background: var(--peach-500);
+      box-shadow: 0 14px 32px rgba(242, 176, 127, 0.18);
+    }
+
+    .primary-btn:hover {
+      background: var(--peach-300);
+    }
+
+    .secondary-btn {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--peach-500);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      padding: 8px 11px;
+      color: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.74rem;
+      font-weight: 720;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 570px;
+      display: grid;
+      place-items: center;
+      perspective: 1200px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 4% 0 5% 11%;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(145deg, rgba(7, 31, 38, 0.18), rgba(7, 31, 38, 0.88)),
+        url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1800&q=85") center / cover;
+      box-shadow: var(--shadow-lg);
+      transform: rotateY(-7deg) rotateX(2deg);
+      overflow: hidden;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: -100% 0 auto;
+      height: 70%;
+      background: linear-gradient(180deg, transparent, rgba(43, 129, 128, 0.22), transparent);
+      animation: scan 5.5s linear infinite;
+    }
+
+    .course-screen {
+      position: relative;
+      z-index: 2;
+      width: min(470px, 92%);
+      padding: 18px;
+      border: 1px solid rgba(242, 176, 127, 0.42);
+      border-radius: 24px;
+      background: rgba(5, 24, 29, 0.86);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42), inset 0 0 40px rgba(43, 129, 128, 0.08);
+      backdrop-filter: blur(18px);
+      transform: translate3d(var(--hero-x, 0), var(--hero-y, 0), 0);
+      transition: transform 180ms var(--ease);
+    }
+
+    .screen-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 4px 4px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .screen-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .screen-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .screen-top code {
+      color: var(--teal-200);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .screen-body {
+      padding: 24px 4px 6px;
+    }
+
+    .screen-label {
+      margin-bottom: 8px;
+      color: var(--peach-500);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .screen-body h2 {
+      margin-bottom: 20px;
+      color: var(--white);
+      font-size: clamp(1.6rem, 3vw, 2.45rem);
+    }
+
+    .unit-trace {
+      display: grid;
+      gap: 9px;
+    }
+
+    .trace-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: 11px;
+      align-items: center;
+      min-height: 48px;
+      padding: 8px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.035);
+      overflow: hidden;
+    }
+
+    .trace-row::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--trace-width, 68%);
+      background: linear-gradient(90deg, rgba(43, 129, 128, 0.19), transparent);
+      animation: trace-pulse 4s ease-in-out infinite alternate;
+    }
+
+    .trace-row:nth-child(2)::before { animation-delay: -0.8s; }
+    .trace-row:nth-child(3)::before { animation-delay: -1.6s; }
+    .trace-row:nth-child(4)::before { animation-delay: -2.4s; }
+    .trace-row:nth-child(5)::before { animation-delay: -3.2s; }
+
+    .trace-index,
+    .trace-name,
+    .trace-count {
+      position: relative;
+      z-index: 1;
+    }
+
+    .trace-index {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      color: var(--ink-950);
+      background: var(--peach-500);
+      border-radius: 9px;
+      font-size: 0.72rem;
+      font-weight: 950;
+    }
+
+    .trace-name {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .trace-count {
+      color: rgba(255, 255, 255, 0.46);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.67rem;
+    }
+
+    .floating-note {
+      position: absolute;
+      z-index: 3;
+      max-width: 190px;
+      padding: 12px 14px;
+      color: var(--ink-950);
+      background: var(--peach-500);
+      border-radius: 14px;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+      font-size: 0.75rem;
+      font-weight: 850;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .floating-note.note-one {
+      top: 8%;
+      right: -2%;
+    }
+
+    .floating-note.note-two {
+      bottom: 5%;
+      left: 2%;
+      color: var(--white);
+      background: var(--teal-600);
+      animation-delay: -2.4s;
+    }
+
+    .project-nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: min(var(--content), calc(100% - 36px));
+      margin: -30px auto 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 254, 251, 0.92);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(18px);
+    }
+
+    .project-nav a {
+      padding: 10px 14px;
+      color: var(--muted);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .project-nav a:hover,
+    .project-nav a.is-current {
+      color: var(--white);
+      background: var(--ink-900);
+      transform: translateY(-1px);
+    }
+
+    .content-section {
+      width: min(var(--content), calc(100% - 64px));
+      margin: 0 auto;
+      padding: clamp(86px, 10vw, 150px) 0;
+    }
+
+    .content-section.compact {
+      padding-top: clamp(70px, 8vw, 110px);
+      padding-bottom: clamp(70px, 8vw, 110px);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
+      gap: clamp(30px, 7vw, 90px);
+      align-items: end;
+      margin-bottom: clamp(42px, 6vw, 76px);
+    }
+
+    .section-heading h2 {
+      max-width: 850px;
+      margin-bottom: 0;
+    }
+
+    .section-heading > p {
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .section-title {
+      color: var(--teal-600);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(30px, 5vw, 70px);
+      align-items: start;
+    }
+
+    .story-copy {
+      position: sticky;
+      top: calc(var(--header-height) + 38px);
+      padding: clamp(26px, 4vw, 46px);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(242, 176, 127, 0.15), transparent 15rem),
+        linear-gradient(145deg, var(--ink-900), var(--ink-950));
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .story-copy::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -80px;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      box-shadow: 0 0 0 38px rgba(255, 255, 255, 0.025), 0 0 0 76px rgba(255, 255, 255, 0.018);
+    }
+
+    .story-copy h3 {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.7rem);
+    }
+
+    .story-copy p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .story-copy strong {
+      color: var(--peach-500);
+    }
+
+    .principle-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .principle-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 18px;
+      padding: clamp(22px, 3vw, 30px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 254, 251, 0.8);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: transform 220ms var(--ease), box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .principle-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(19, 87, 91, 0.3);
+      box-shadow: var(--shadow-md);
+    }
+
+    .principle-number {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      color: var(--ink-950);
+      background: var(--teal-100);
+      border-radius: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .principle-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    .principle-card p {
+      margin-bottom: 0;
+      font-size: 0.94rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 52px;
+    }
+
+    .metric-card {
+      position: relative;
+      min-height: 170px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -30px -50px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(242, 176, 127, 0.12);
+    }
+
+    .metric-card strong {
+      position: relative;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal-700);
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.07em;
+    }
+
+    .metric-card span {
+      position: relative;
+      display: block;
+      color: var(--ink-950);
+      font-size: 0.86rem;
+      font-weight: 820;
+      line-height: 1.35;
+    }
+
+    .motion-feature {
+      position: relative;
+      width: min(1440px, calc(100% - 32px));
+      min-height: 560px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      isolation: isolate;
+    }
+
+    .motion-feature::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(7, 31, 38, 0.94) 5%, rgba(7, 31, 38, 0.64) 58%, rgba(7, 31, 38, 0.3)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2000&q=86") center / cover;
+      transform: scale(1.03);
+      animation: image-breathe 14s ease-in-out infinite alternate;
+    }
+
+    .motion-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, transparent 55%, rgba(7, 31, 38, 0.72));
+    }
+
+    .motion-copy {
+      display: grid;
+      align-content: end;
+      min-height: 560px;
+      width: min(var(--content), calc(100% - 56px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .motion-copy h2 {
+      max-width: 880px;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+    }
+
+    .motion-copy h2 span {
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .motion-copy p {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1.05rem;
+    }
+
+    .unit-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .unit-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 254, 251, 0.9);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: border-color 220ms ease, transform 220ms var(--ease), box-shadow 220ms ease;
+    }
+
+    .unit-card:hover,
+    .unit-card.is-open {
+      border-color: rgba(19, 87, 91, 0.33);
+      box-shadow: var(--shadow-md);
+    }
+
+    .unit-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .unit-summary {
+      position: relative;
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) auto;
+      gap: clamp(20px, 4vw, 46px);
+      align-items: center;
+      min-height: 230px;
+      padding: clamp(26px, 4vw, 48px);
+      overflow: hidden;
+    }
+
+    .unit-summary::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 42%;
+      background:
+        linear-gradient(90deg, transparent, rgba(19, 87, 91, 0.07)),
+        radial-gradient(circle at 80% 25%, rgba(242, 176, 127, 0.16), transparent 13rem);
+      pointer-events: none;
+    }
+
+    .unit-badge {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 102px;
+      height: 102px;
+      color: var(--white);
+      background: linear-gradient(145deg, var(--ink-900), var(--teal-600));
+      border-radius: 30px;
+      box-shadow: 0 18px 38px rgba(11, 47, 53, 0.2);
+    }
+
+    .unit-badge span:first-child {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .unit-badge span:last-child {
+      margin-top: -7px;
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.4rem;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .unit-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .unit-copy h3 {
+      margin-bottom: 11px;
+      font-size: clamp(1.65rem, 3.4vw, 3.25rem);
+    }
+
+    .unit-copy p {
+      max-width: 760px;
+      margin-bottom: 16px;
+    }
+
+    .topic-row {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .topic-chip {
+      padding: 6px 9px;
+      color: var(--teal-700);
+      border: 1px solid rgba(19, 87, 91, 0.14);
+      border-radius: 999px;
+      background: var(--teal-100);
+      font-size: 0.68rem;
+      font-weight: 820;
+    }
+
+    .expand-button {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 152px;
+      padding: 12px 15px;
+      color: var(--ink-950);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      cursor: pointer;
+      font-size: 0.74rem;
+      font-weight: 850;
+      white-space: nowrap;
+      transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .expand-button:hover {
+      color: var(--white);
+      border-color: var(--ink-900);
+      background: var(--ink-900);
+      transform: translateY(-1px);
+    }
+
+    .expand-icon {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      transition: transform 260ms var(--ease);
+    }
+
+    .is-open .expand-icon {
+      transform: rotate(45deg);
+    }
+
+    .expandable-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      border-top: 0 solid var(--line);
+      transition: grid-template-rows 420ms var(--ease), border-top-width 260ms ease;
+    }
+
+    .unit-card.is-open .expandable-wrap,
+    .research-card.is-open .expandable-wrap {
+      grid-template-rows: 1fr;
+      border-top-width: 1px;
+    }
+
+    .expandable-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .unit-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: clamp(28px, 5vw, 70px);
+      padding: clamp(28px, 5vw, 56px);
+      background: linear-gradient(180deg, rgba(220, 235, 231, 0.28), transparent);
+    }
+
+    .detail-panel h4 {
+      margin-bottom: 14px;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .module-list,
+    .evidence-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .module-list li,
+    .evidence-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .module-list li::before,
+    .evidence-list li::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      color: var(--teal-700);
+      background: var(--teal-100);
+      border-radius: 7px;
+      font-size: 0.65rem;
+      font-weight: 900;
+    }
+
+    .module-list li::before {
+      content: attr(data-module);
+    }
+
+    .evidence-list li::before {
+      content: "✓";
+    }
+
+    .detail-callout {
+      margin-top: 22px;
+      padding: 18px;
+      color: var(--ink-950);
+      border-left: 3px solid var(--peach-500);
+      background: rgba(242, 176, 127, 0.12);
+      border-radius: 0 14px 14px 0;
+      font-size: 0.86rem;
+      font-weight: 670;
+    }
+
+    .standards-note {
+      margin-top: 16px;
+      color: var(--teal-700);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      line-height: 1.55;
+    }
+
+    .research-band {
+      position: relative;
+      padding: clamp(90px, 10vw, 150px) 0;
+      color: var(--white);
+      background:
+        linear-gradient(115deg, rgba(7, 31, 38, 0.98), rgba(7, 31, 38, 0.88)),
+        url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=86") center / cover fixed;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .research-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.13;
+      background-image:
+        radial-gradient(circle at 15% 20%, var(--peach-500) 0 2px, transparent 3px),
+        radial-gradient(circle at 68% 40%, var(--teal-200) 0 2px, transparent 3px),
+        linear-gradient(35deg, transparent 48%, rgba(255, 255, 255, 0.13) 49% 50%, transparent 51%);
+      background-size: 160px 160px, 220px 220px, 180px 180px;
+      animation: research-drift 22s linear infinite;
+    }
+
+    .research-inner {
+      width: min(var(--content), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .research-band .section-title {
+      color: var(--peach-500);
+    }
+
+    .research-band h2 {
+      max-width: 920px;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
+
+    .research-lead {
+      max-width: 790px;
+      margin-bottom: 48px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .research-card {
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+      transition: background 200ms ease, border-color 200ms ease, transform 200ms var(--ease);
+    }
+
+    .research-card:hover,
+    .research-card.is-open {
+      border-color: rgba(242, 176, 127, 0.55);
+      background: rgba(255, 255, 255, 0.085);
+    }
+
+    .research-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .research-toggle {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      min-height: 134px;
+      padding: 24px;
+      color: var(--white);
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .research-index {
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      font-style: italic;
+    }
+
+    .research-title {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--white);
+      font-size: 1.28rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .research-toggle p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.83rem;
+    }
+
+    .research-card .expand-icon {
+      color: var(--peach-500);
+    }
+
+    .research-card .expandable-wrap {
+      border-top-color: var(--line-dark);
+    }
+
+    .research-detail {
+      padding: 0 24px 26px 75px;
+    }
+
+    .research-detail p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.9rem;
+    }
+
+    .research-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .research-actions .primary-btn {
+      min-height: 50px;
+    }
+
+    .research-actions .secondary-btn {
+      min-height: 50px;
+    }
+
+    .embed-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.35fr) minmax(0, 0.65fr);
+      gap: clamp(30px, 5vw, 64px);
+      align-items: start;
+    }
+
+    .embed-copy {
+      position: sticky;
+      top: calc(var(--header-height) + 32px);
+    }
+
+    .embed-copy h2 {
+      margin-bottom: 20px;
+      font-size: clamp(2.35rem, 4.6vw, 4.5rem);
+    }
+
+    .embed-copy p {
+      margin-bottom: 22px;
+    }
+
+    .config-note {
+      padding: 16px;
+      color: var(--ink-950);
+      border: 1px solid rgba(19, 87, 91, 0.16);
+      border-radius: 14px;
+      background: var(--teal-100);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.74rem;
+      line-height: 1.55;
+    }
+
+    .embed-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .frame-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 62px;
+      padding: 12px 16px;
+      color: var(--white);
+      background: var(--ink-900);
+    }
+
+    .frame-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.02em;
+    }
+
+    .frame-title::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--peach-500);
+      box-shadow: 0 0 0 5px rgba(242, 176, 127, 0.14);
+    }
+
+    .frame-action {
+      min-height: 38px;
+      padding: 9px 12px;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+
+    .frame-action:hover {
+      transform: translateY(-1px);
+      border-color: var(--peach-500);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .frame-shell {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      min-height: 430px;
+      background: linear-gradient(135deg, #edf4f1, #f7f3eb);
+      overflow: hidden;
+    }
+
+    .frame-shell iframe {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: var(--paper);
+    }
+
+    .frame-placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(242, 176, 127, 0.22), transparent 15rem),
+        linear-gradient(145deg, var(--cream-100), var(--teal-100));
+    }
+
+    .frame-placeholder-inner {
+      max-width: 520px;
+    }
+
+    .placeholder-icon {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 22px;
+      color: var(--peach-500);
+      background: var(--ink-900);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(11, 47, 53, 0.2);
+      font-size: 1.6rem;
+      font-weight: 900;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .frame-placeholder h3 {
+      margin-bottom: 10px;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+    }
+
+    .frame-placeholder p {
+      margin-bottom: 14px;
+    }
+
+    .frame-placeholder code {
+      display: inline-block;
+      padding: 8px 10px;
+      color: var(--teal-700);
+      background: rgba(255, 255, 255, 0.68);
+      border-radius: 8px;
+      font-size: 0.72rem;
+      overflow-wrap: anywhere;
+    }
+
+    .prototype-section {
+      position: relative;
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(70px, 8vw, 110px) clamp(20px, 4vw, 60px);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(80, 230, 255, 0.11), transparent 30rem),
+        radial-gradient(circle at 94% 12%, rgba(242, 176, 127, 0.1), transparent 26rem),
+        linear-gradient(180deg, #07111f, #06101a 56%, #050b13);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .prototype-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(109, 165, 207, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(109, 165, 207, 0.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, black, transparent 88%);
+    }
+
+    .prototype-inner {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+    }
+
+    .prototype-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      gap: 44px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .prototype-heading .section-title {
+      color: #50e6ff;
+    }
+
+    .prototype-heading h2 {
+      margin-bottom: 0;
+      color: var(--white);
+    }
+
+    .prototype-heading p {
+      margin-bottom: 0;
+      color: #9fb4c8;
+    }
+
+    .prototype-frame {
+      border: 1px solid #29425d;
+      border-radius: 24px;
+      background: #0f1e31;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+      overflow: hidden;
+    }
+
+    .prototype-frame .frame-toolbar {
+      background: rgba(6, 16, 28, 0.94);
+      border-bottom: 1px solid #29425d;
+    }
+
+    .prototype-frame .frame-title::before {
+      background: #50e6ff;
+      box-shadow: 0 0 0 5px rgba(80, 230, 255, 0.12);
+    }
+
+    .prototype-mount {
+      position: relative;
+      min-height: 650px;
+    }
+
+    .prototype-mount > iframe {
+      width: 100%;
+      min-height: 650px;
+      border: 0;
+      background: #07111f;
+    }
+
+    .prototype-demo {
+      min-height: 650px;
+      padding: clamp(18px, 3vw, 38px);
+      color: #f3f7fb;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(80, 230, 255, 0.08), transparent 24rem),
+        linear-gradient(180deg, #07111f, #07101c);
+    }
+
+    .demo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #29425d;
+    }
+
+    .demo-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+    }
+
+    .demo-brand-mark {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      color: #50e6ff;
+      border: 1px solid rgba(80, 230, 255, 0.5);
+      border-radius: 12px;
+      background: rgba(80, 230, 255, 0.09);
+    }
+
+    .demo-status {
+      padding: 6px 9px;
+      color: #75f0bc;
+      border: 1px solid rgba(117, 240, 188, 0.32);
+      border-radius: 999px;
+      background: rgba(25, 93, 69, 0.26);
+      font-size: 0.68rem;
+      font-weight: 850;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .artifact-card,
+    .analyst-card {
+      border: 1px solid #29425d;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(17, 34, 54, 0.97), rgba(12, 26, 43, 0.97));
+      overflow: hidden;
+    }
+
+    .artifact-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 14px;
+      color: #c8d8e7;
+      background: #182c3e;
+      font-size: 0.7rem;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .email-surface {
+      min-height: 455px;
+      padding: clamp(20px, 3vw, 32px);
+      color: #263641;
+      background: #ffffff;
+    }
+
+    .email-subject {
+      margin-bottom: 22px;
+      color: #18222d;
+      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+      font-weight: 780;
+      line-height: 1.2;
+    }
+
+    .email-meta {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e7edf1;
+    }
+
+    .email-avatar {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: #ffffff;
+      background: #315d79;
+      border-radius: 50%;
+      font-weight: 900;
+    }
+
+    .email-meta strong,
+    .email-meta small {
+      display: block;
+    }
+
+    .email-meta small {
+      margin-top: 2px;
+      color: #64798a;
+      overflow-wrap: anywhere;
+    }
+
+    .email-surface p {
+      color: #263641;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .fake-email-link {
+      display: inline-block;
+      margin: 7px 0 18px;
+      padding: 10px 14px;
+      color: #ffffff;
+      background: #176ca5;
+      border-radius: 6px;
+      border: 0;
+      cursor: default;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 780;
+    }
+
+    .evidence-target {
+      padding: 2px 4px;
+      border: 1px dashed rgba(18, 110, 142, 0.6);
+      border-radius: 5px;
+      background: rgba(80, 230, 255, 0.1);
+    }
+
+    .analyst-card {
+      position: sticky;
+      top: calc(var(--header-height) + 18px);
+      padding: 22px;
+    }
+
+    .analyst-card h3 {
+      margin-bottom: 8px;
+      color: #f3f7fb;
+      font-size: 1.25rem;
+    }
+
+    .analyst-card > p {
+      color: #9fb4c8;
+      font-size: 0.84rem;
+    }
+
+    .clue-list {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .clue-chip {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 9px 10px;
+      color: #dcecff;
+      border: 1px solid #29425d;
+      border-radius: 9px;
+      background: rgba(13, 29, 48, 0.76);
+      font-size: 0.76rem;
+    }
+
+    .clue-chip::before {
+      content: "◇";
+      color: #50e6ff;
+      font-weight: 900;
+    }
+
+    .verdict-label {
+      margin: 20px 0 9px;
+      color: #7690a8;
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .verdict-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .verdict-button {
+      min-height: 42px;
+      padding: 8px;
+      color: #f3f7fb;
+      border: 1px solid #3d617f;
+      border-radius: 9px;
+      background: rgba(18, 39, 62, 0.92);
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 850;
+      transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+    }
+
+    .verdict-button:hover {
+      transform: translateY(-1px);
+      border-color: #50e6ff;
+      background: rgba(22, 49, 76, 0.98);
+    }
+
+    .verdict-button.is-selected {
+      color: #041017;
+      border-color: #50e6ff;
+      background: linear-gradient(135deg, #79efff, #4fd2ea);
+    }
+
+    .verdict-feedback {
+      min-height: 78px;
+      margin-top: 14px;
+      padding: 12px;
+      color: #9fb4c8;
+      border: 1px solid #29425d;
+      border-radius: 10px;
+      background: rgba(9, 23, 39, 0.78);
+      font-size: 0.78rem;
+    }
+
+    .verdict-feedback strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #f3f7fb;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .download-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 20px;
+      min-height: 235px;
+      padding: clamp(24px, 3vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: transform 220ms var(--ease), box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .download-card::after {
+      content: attr(data-format);
+      position: absolute;
+      right: -7px;
+      bottom: -28px;
+      color: rgba(11, 47, 53, 0.045);
+      font-size: 6rem;
+      font-weight: 950;
+      letter-spacing: -0.08em;
+    }
+
+    .download-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(19, 87, 91, 0.3);
+      box-shadow: var(--shadow-md);
+    }
+
+    .download-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      color: var(--white);
+      background: linear-gradient(145deg, var(--ink-900), var(--teal-600));
+      border-radius: 18px;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .download-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .download-copy h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .download-copy p {
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+
+    .download-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .format-pill {
+      padding: 5px 8px;
+      color: var(--teal-700);
+      background: var(--teal-100);
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 900;
+    }
+
+    .download-link {
+      min-height: 38px;
+      padding: 9px 12px;
+      color: var(--white);
+      background: var(--ink-900);
+      font-size: 0.7rem;
+    }
+
+    .download-link:hover {
+      transform: translateY(-1px);
+      background: var(--teal-700);
+    }
+
+    .connect-strip {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      width: min(var(--content), calc(100% - 64px));
+      margin: clamp(80px, 10vw, 140px) auto;
+      padding: clamp(24px, 4vw, 42px);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(242, 176, 127, 0.16), transparent 14rem),
+        linear-gradient(135deg, var(--ink-900), var(--ink-950));
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .idea-icon {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      color: var(--ink-950);
+      background: var(--peach-500);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      animation: slow-spin 14s linear infinite;
+    }
+
+    .connect-strip p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+    }
+
+    .outline-btn {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: transparent;
+      white-space: nowrap;
+    }
+
+    .outline-btn:hover {
+      transform: translateY(-2px);
+      color: var(--ink-950);
+      border-color: var(--peach-500);
+      background: var(--peach-500);
+    }
+
+    .site-footer {
+      padding: clamp(64px, 8vw, 110px) clamp(22px, 5vw, 80px) 28px;
+      color: var(--white);
+      background: #061b20;
+    }
+
+    .site-footer-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 50px;
+      align-items: end;
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+      padding-bottom: 54px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .site-footer-label {
+      color: var(--peach-500);
+    }
+
+    .site-footer-copy h2 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+    }
+
+    .site-footer-copy > p:last-child {
+      max-width: 690px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .site-footer-actions {
+      display: grid;
+      justify-items: start;
+      gap: 14px;
+    }
+
+    .site-footer-button {
+      color: var(--ink-950);
+      background: var(--peach-500);
+    }
+
+    .site-footer-email {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.83rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .site-footer-email:hover {
+      color: var(--white);
+    }
+
+    .site-footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+      padding-top: 24px;
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.72rem;
+    }
+
+    .site-footer-bottom nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .site-footer-bottom a:hover {
+      color: var(--white);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    dialog {
+      width: min(1240px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      color: var(--white);
+      border: 1px solid #29425d;
+      border-radius: 24px;
+      background: #07111f;
+      box-shadow: 0 35px 120px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    dialog::backdrop {
+      background: rgba(2, 12, 15, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .dialog-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 16px;
+      border-bottom: 1px solid #29425d;
+      background: rgba(6, 16, 28, 0.96);
+    }
+
+    .dialog-toolbar strong {
+      font-size: 0.82rem;
+    }
+
+    .dialog-close {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      color: var(--white);
+      border: 1px solid #29425d;
+      border-radius: 50%;
+      background: #0f1e31;
+      cursor: pointer;
+      font-size: 1.15rem;
+    }
+
+    .dialog-body {
+      max-height: calc(100vh - 95px);
+      overflow: auto;
+    }
+
+    .dialog-body > iframe {
+      display: block;
+      width: 100%;
+      min-height: calc(100vh - 95px);
+      border: 0;
+      background: #07111f;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+      max-width: 380px;
+      padding: 14px 16px;
+      color: var(--white);
+      background: var(--ink-950);
+      border: 1px solid rgba(242, 176, 127, 0.42);
+      border-radius: 14px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms var(--ease);
+      font-size: 0.82rem;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes grid-drift {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 46px 46px, 46px 46px; }
+    }
+
+    @keyframes scan {
+      from { transform: translateY(-10%); }
+      to { transform: translateY(300%); }
+    }
+
+    @keyframes trace-pulse {
+      from { opacity: 0.35; transform: scaleX(0.76); transform-origin: left; }
+      to { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    @keyframes image-breathe {
+      from { transform: scale(1.03); }
+      to { transform: scale(1.09); }
+    }
+
+    @keyframes research-drift {
+      from { background-position: 0 0, 0 0, 0 0; }
+      to { background-position: 160px 160px, -220px 220px, 180px 180px; }
+    }
+
+    @keyframes slow-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1180px) {
+      .site-header {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .nav {
+        position: fixed;
+        inset: var(--header-height) 0 0;
+        z-index: 98;
+        display: grid;
+        align-content: start;
+        justify-items: stretch;
+        gap: 0;
+        padding: 28px 24px 60px;
+        background: rgba(252, 250, 245, 0.98);
+        backdrop-filter: blur(22px);
+        transform: translateX(100%);
+        transition: transform 300ms var(--ease);
+        overflow-y: auto;
+      }
+
+      .nav.is-open {
+        transform: translateX(0);
+      }
+
+      .nav a {
+        padding: 18px 8px;
+        border-bottom: 1px solid var(--line);
+        font-size: 1.05rem;
+      }
+
+      .nav a::after {
+        display: none;
+      }
+
+      .resume-btn {
+        justify-self: end;
+        margin-right: 10px;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: 860px;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .hero-photo {
+        inset: 0 6% 0 12%;
+      }
+
+      .floating-note.note-one {
+        right: 3%;
+      }
+
+      .section-heading,
+      .prototype-heading {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .unit-summary {
+        grid-template-columns: 100px minmax(0, 1fr);
+      }
+
+      .unit-summary .expand-button {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .embed-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .embed-copy {
+        position: static;
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .analyst-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --header-height: 76px;
+      }
+
+      .site-header {
+        min-height: var(--header-height);
+        padding: 12px 18px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .resume-btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 22px 80px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.1rem, 13vw, 5.6rem);
+      }
+
+      .hero-visual {
+        min-height: 440px;
+      }
+
+      .floating-note {
+        display: none;
+      }
+
+      .project-nav {
+        justify-content: flex-start;
+        border-radius: 20px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
+      .project-nav a {
+        flex: 0 0 auto;
+      }
+
+      .content-section,
+      .research-inner,
+      .connect-strip {
+        width: calc(100% - 32px);
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-copy {
+        position: static;
+      }
+
+      .motion-feature,
+      .prototype-section {
+        width: calc(100% - 20px);
+        border-radius: 24px;
+      }
+
+      .motion-copy {
+        width: calc(100% - 40px);
+      }
+
+      .research-grid,
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .unit-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .prototype-mount,
+      .prototype-mount > iframe,
+      .prototype-demo {
+        min-height: 720px;
+      }
+
+      .connect-strip {
+        grid-template-columns: auto 1fr;
+      }
+
+      .connect-strip .outline-btn {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+
+      .site-footer-inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand-copy strong {
+        font-size: 0.82rem;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-actions > a {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 380px;
+      }
+
+      .hero-photo {
+        inset: 0 0 0 3%;
+        border-radius: 24px;
+      }
+
+      .course-screen {
+        width: 96%;
+        padding: 13px;
+        border-radius: 18px;
+      }
+
+      .trace-row {
+        grid-template-columns: 30px minmax(0, 1fr);
+      }
+
+      .trace-count {
+        display: none;
+      }
+
+      .content-section {
+        width: calc(100% - 24px);
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .motion-feature {
+        min-height: 510px;
+      }
+
+      .motion-copy {
+        min-height: 510px;
+        width: calc(100% - 30px);
+        padding: 48px 0;
+      }
+
+      .unit-summary {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: 24px;
+      }
+
+      .unit-badge {
+        width: 78px;
+        height: 78px;
+        border-radius: 23px;
+      }
+
+      .unit-badge span:last-child {
+        font-size: 1.9rem;
+      }
+
+      .unit-summary .expand-button {
+        grid-column: 1;
+      }
+
+      .research-inner {
+        width: calc(100% - 24px);
+      }
+
+      .research-toggle {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .research-toggle .expand-icon {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .research-detail {
+        padding: 0 20px 22px;
+      }
+
+      .frame-shell {
+        min-height: 330px;
+      }
+
+      .frame-toolbar {
+        align-items: flex-start;
+      }
+
+      .frame-action {
+        white-space: nowrap;
+      }
+
+      .prototype-section {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .prototype-heading {
+        gap: 20px;
+      }
+
+      .prototype-mount,
+      .prototype-mount > iframe,
+      .prototype-demo {
+        min-height: 820px;
+      }
+
+      .demo-nav {
+        align-items: flex-start;
+      }
+
+      .email-surface {
+        padding: 18px;
+      }
+
+      .verdict-row {
+        grid-template-columns: 1fr;
+      }
+
+      .download-card {
+        grid-template-columns: 1fr;
+      }
+
+      .connect-strip {
+        grid-template-columns: 1fr;
+        width: calc(100% - 24px);
+      }
+
+      .site-footer {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .site-footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* ================================================================
+       BOLD EDITORIAL SPLIT HERO
+       A strong two-panel composition: clear typography on the left,
+       a full-height stock photo on the right, and one metric rail below.
+       To use a local image, update the <img> source in the hero markup.
+       ================================================================ */
+
+    .hero {
+      position: relative;
+      min-height: 0;
+      padding: 0;
+      color: var(--white);
+      background: var(--ink-950);
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    /* Remove the earlier decorative grid and binary layers. */
+    .hero::before,
+    .hero::after {
+      content: none;
+      display: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(580px, 57%) minmax(420px, 43%);
+      gap: 0;
+      align-items: stretch;
+      width: 100%;
+      max-width: none;
+      min-height: max(650px, calc(100vh - var(--header-height) - 112px));
+      margin: 0;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: none;
+      padding:
+        clamp(72px, 8vw, 126px)
+        clamp(42px, 7vw, 120px)
+        clamp(62px, 7vw, 104px);
+      background:
+        radial-gradient(circle at 94% 9%, rgba(242, 176, 127, 0.09), transparent 24rem),
+        linear-gradient(135deg, #061d23 0%, var(--ink-950) 48%, var(--ink-900) 100%);
+      overflow: hidden;
+    }
+
+    /* A restrained seam draws the eye from the copy into the image. */
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      top: clamp(70px, 9vw, 132px);
+      right: 0;
+      bottom: clamp(70px, 9vw, 132px);
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(242, 176, 127, 0.78), transparent);
+    }
+
+    .hero .eyebrow {
+      margin-bottom: clamp(22px, 3vw, 34px);
+    }
+
+    .hero h1 {
+      max-width: 920px;
+      margin-bottom: 24px;
+      color: var(--white);
+      font-size: clamp(4.35rem, 7.45vw, 8.35rem);
+      line-height: 0.84;
+      letter-spacing: -0.075em;
+      text-shadow: none;
+    }
+
+    .hero h1 > span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .hero h1 em {
+      display: block;
+      margin-top: 0.14em;
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.7em;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-subtitle {
+      max-width: 720px;
+      margin-bottom: 14px;
+      color: var(--white);
+      font-size: clamp(1.08rem, 1.65vw, 1.45rem);
+      font-weight: 820;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .intro {
+      max-width: 650px;
+      margin-bottom: 34px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+      text-shadow: none;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .hero-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0 5px;
+      color: rgba(255, 255, 255, 0.76);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+      font-size: 0.84rem;
+      font-weight: 820;
+      line-height: 1.2;
+      transition: color 180ms ease, border-color 180ms ease, transform 180ms var(--ease);
+    }
+
+    .hero-text-link:hover {
+      color: var(--peach-500);
+      border-color: var(--peach-500);
+      transform: translateX(4px);
+    }
+
+    .hero-media {
+      position: relative;
+      min-width: 0;
+      min-height: inherit;
+      margin: 0;
+      background: var(--ink-900);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: 58% center;
+      filter: saturate(0.8) contrast(1.08) brightness(0.82);
+      transform: scale(1.025);
+      transition: transform 8s ease-out, filter 500ms ease;
+    }
+
+    .hero:hover .hero-media img {
+      transform: scale(1.065);
+      filter: saturate(0.88) contrast(1.08) brightness(0.86);
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(7, 31, 38, 0.42), transparent 34%),
+        linear-gradient(180deg, rgba(7, 31, 38, 0.04), rgba(7, 31, 38, 0.12) 58%, rgba(7, 31, 38, 0.56));
+    }
+
+    .hero-media figcaption {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      z-index: 2;
+      display: grid;
+      justify-items: end;
+      gap: 4px;
+      max-width: 330px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--white);
+      border-left: 2px solid var(--peach-500);
+      text-align: right;
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-media figcaption span {
+      color: var(--peach-300);
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-media figcaption strong {
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .hero-facts {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      margin: 0;
+      padding: 0 clamp(42px, 7vw, 120px);
+      color: var(--white);
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+      background: #061b20;
+    }
+
+    .hero-fact {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 112px;
+      padding: 22px clamp(16px, 3vw, 44px);
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-fact:first-child {
+      padding-left: 0;
+    }
+
+    .hero-fact:last-child {
+      border-right: 0;
+    }
+
+    .hero-fact dt {
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.65rem, 4vw, 4.05rem);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .hero-fact dd {
+      max-width: 150px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.7rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    /* Old visual elements are no longer part of the simplified hero. */
+    .hero-photo,
+    .hero-visual,
+    .course-screen,
+    .floating-note {
+      display: none;
+    }
+
+    /* ================================================================
+       INTERACTIVE PROTOTYPE CTA
+       A wide, high-contrast launch card with clear hierarchy.
+       ================================================================ */
+
+    .prototype-link {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+      padding: clamp(18px, 2.7vw, 25px);
+      color: #041017;
+      border: 1px solid rgba(145, 243, 255, 0.84);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.75), transparent 17rem),
+        linear-gradient(135deg, #a7f5ff 0%, #50e6ff 52%, #75f0bc 100%);
+      box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(80, 230, 255, 0.1) inset,
+        0 0 45px rgba(80, 230, 255, 0.12);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 220ms var(--ease), box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .prototype-link::before {
+      content: "";
+      position: absolute;
+      top: -35%;
+      bottom: -35%;
+      left: -28%;
+      width: 24%;
+      z-index: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      transform: skewX(-18deg) translateX(-240%);
+      transition: transform 720ms var(--ease);
+      pointer-events: none;
+    }
+
+    .prototype-link::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      z-index: 0;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(4, 16, 23, 0.12);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 34px rgba(4, 16, 23, 0.045),
+        0 0 0 68px rgba(4, 16, 23, 0.025);
+      pointer-events: none;
+    }
+
+    .prototype-link > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .prototype-link:hover {
+      transform: translateY(-5px);
+      border-color: var(--white);
+      box-shadow:
+        0 30px 78px rgba(0, 0, 0, 0.38),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 0 62px rgba(80, 230, 255, 0.2);
+    }
+
+    .prototype-link:hover::before {
+      transform: skewX(-18deg) translateX(720%);
+    }
+
+    .prototype-link:active {
+      transform: translateY(-2px);
+    }
+
+    .prototype-link-icon {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      color: #50e6ff;
+      border: 1px solid rgba(80, 230, 255, 0.36);
+      border-radius: 19px;
+      background: #07111f;
+      box-shadow: 0 12px 30px rgba(7, 17, 31, 0.24);
+    }
+
+    .prototype-link-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .prototype-link-copy {
+      display: grid;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .prototype-link-kicker {
+      color: rgba(4, 16, 23, 0.62);
+      font-size: 0.65rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .prototype-link-title {
+      color: #041017;
+      font-size: clamp(1.08rem, 2vw, 1.5rem);
+      font-weight: 930;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .prototype-link-note {
+      color: rgba(4, 16, 23, 0.68);
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .prototype-link-arrow {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      background: #07111f;
+      box-shadow: 0 10px 25px rgba(7, 17, 31, 0.22);
+      font-size: 1.25rem;
+      font-weight: 900;
+      transition: transform 220ms var(--ease), background 220ms ease;
+    }
+
+    .prototype-link:hover .prototype-link-arrow {
+      transform: translateX(5px) rotate(-8deg);
+      background: #0b2f35;
+    }
+
+    @media (max-width: 1180px) and (min-width: 981px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+      }
+
+      .hero-copy {
+        padding-right: clamp(36px, 5vw, 70px);
+        padding-left: clamp(36px, 5vw, 70px);
+      }
+
+      .hero h1 {
+        font-size: clamp(4rem, 7.1vw, 6.7rem);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-copy {
+        padding: clamp(66px, 9vw, 96px) clamp(28px, 7vw, 72px);
+      }
+
+      .hero-copy::after {
+        display: none;
+      }
+
+      .hero h1 > span {
+        white-space: normal;
+      }
+
+      .hero-media {
+        min-height: 500px;
+      }
+
+      .hero-media img {
+        object-position: center 42%;
+      }
+
+      .hero-facts {
+        padding-right: clamp(28px, 7vw, 72px);
+        padding-left: clamp(28px, 7vw, 72px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-copy {
+        padding: 64px 22px 56px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 16vw, 5.8rem);
+      }
+
+      .hero h1 em {
+        font-size: 0.66em;
+      }
+
+      .hero-actions {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero-actions > a {
+        width: auto;
+      }
+
+      .hero-actions .primary-btn {
+        width: 100%;
+      }
+
+      .hero-media {
+        min-height: 400px;
+      }
+
+      .hero-media figcaption {
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+        justify-items: start;
+        max-width: none;
+        text-align: left;
+      }
+
+      .hero-facts {
+        grid-template-columns: 1fr;
+        padding: 0 22px;
+      }
+
+      .hero-fact {
+        min-height: 86px;
+        padding: 15px 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-fact:last-child {
+        border-bottom: 0;
+      }
+
+      .prototype-link {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 14px;
+        border-radius: 18px;
+      }
+
+      .prototype-link-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 16px;
+      }
+
+      .prototype-link-arrow {
+        grid-column: 2;
+        width: 40px;
+        height: 40px;
+        margin-top: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prototype-link-note {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <div class="site-shell">
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="index.html#top" aria-label="Jamie Reichenberger home">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-fallback">JR</span>
+          <img
+            src="Assets/logo.png"
+            alt=""
+            class="brand-logo"
+            onerror="this.classList.add('is-missing')"
+          >
+        </span>
+        <span class="brand-copy">
+          <strong>Jamie Reichenberger</strong>
+          <span>Senior Curriculum Director &amp; AI Learning Strategist</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Case Studies</a>
+        <a class="active" href="#top">Demo Project</a>
+        <a href="index.html#case-studies">Experience</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#skills">Capabilities</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="resume-btn magnetic" href="contact.html">
+        Let's Connect <span aria-hidden="true">→</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="primaryNav"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy reveal is-visible">
+            <p class="eyebrow">Curriculum Proposal · Cybersecurity Education</p>
+
+            <h1 id="hero-title">
+              <span>Foundations of</span>
+              <em>Cybersecurity</em>
+            </h1>
+
+            <p class="hero-subtitle">
+              Twenty modules. Five units. One coherent learning pathway.
+            </p>
+
+            <p class="intro">
+              A standards-informed course proposal that moves learners from ethical,
+              authorized practice to systems defense, incident response, AI security,
+              and an organization-protection capstone.
+            </p>
+
+            <div class="hero-actions">
+              <a class="primary-btn magnetic" href="#course-architecture">
+                Explore the Course <span aria-hidden="true">→</span>
+              </a>
+
+              <a class="hero-text-link" href="#research">
+                View the research package <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <figure
+            class="hero-media reveal is-visible"
+            id="heroVisual"
+            aria-label="Collaborative technology learning environment"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1758270705172-07b53627dfcb?auto=format&fit=crop&w=2200&q=88"
+              alt="Learners collaborating in a technology-focused learning environment"
+              width="2200"
+              height="1467"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
+
+            <figcaption>
+              <span>Course design focus</span>
+              <strong>Safe practice · evidence-centered learning</strong>
+            </figcaption>
+          </figure>
+        </div>
+
+      
+      </section>
+
+      <nav class="project-nav" aria-label="Course proposal sections">
+                <a href="#presentation">Presentation</a>
+        <a href="#overview">Overview</a>
+        <a href="#course-architecture">Course Architecture</a>
+        <a href="#research">Research</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#downloads">Downloads</a>
+      </nav>
+
+            <section class="content-section" id="presentation" aria-labelledby="presentation-title">
+   <div
+  style="
+    position: relative;
+    width: min(100%, 1400px);
+    aspect-ratio: 16 / 9;
+    margin: 1.6em auto 0.9em;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(63, 69, 81, 0.16);
+  "
+>
+  <iframe
+    loading="lazy"
+    title="Cybersecurity Curriculum Case Study"
+    src="https://www.canva.com/design/DAHRGJwc-Cg/tzPNLwwDr0u9ujjXgNfBjA/view?embed"
+    allow="fullscreen"
+    allowfullscreen
+    style="
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    "
+  ></iframe>
+</div>
+      </section>
+
+      <section class="content-section" id="overview" aria-labelledby="overview-title">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-title">Proposal Overview</div>
+            <h2 id="overview-title">A portable course architecture built for approval, adoption, and real learning.</h2>
+          </div>
+          <p>
+            The proposal connects curriculum strategy, national standards anchors, safe lab design, authentic assessment, privacy, responsible AI use, and career awareness. Every module asks learners to produce evidence—not simply recall vocabulary.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-copy reveal">
+            <div class="card-kicker">Design thesis</div>
+            <h3>Cybersecurity education should teach <strong>judgment</strong> before confidence.</h3>
+            <p>
+              The course begins with authorization, ethics, digital citizenship, and responsible disclosure. Technical depth grows through systems, networks, identity, cryptography, hardening, coding, data analysis, organizational defense, incident response, AI security, and leadership.
+            </p>
+            <p>
+              Practice remains bounded by explicit scope: isolated environments, resettable virtual machines, synthetic logs, fictional organizations, classroom-safe tools, and documented verification or recovery steps.
+            </p>
+          </article>
+
+          <div class="principle-stack">
+            <article class="principle-card reveal" style="--reveal-delay:60ms">
+              <span class="principle-number">01</span>
+              <div>
+                <h3>Ethical before technical</h3>
+                <p>Authorization, acceptable use, responsible disclosure, privacy, and stakeholder communication are established before learners perform defensive technical work.</p>
+              </div>
+            </article>
+
+            <article class="principle-card reveal" style="--reveal-delay:120ms">
+              <span class="principle-number">02</span>
+              <div>
+                <h3>Evidence over intuition</h3>
+                <p>Learners use logs, diagrams, source/context/content/channel evidence, tests, and reproducible observations to justify conclusions and recommendations.</p>
+              </div>
+            </article>
+
+            <article class="principle-card reveal" style="--reveal-delay:180ms">
+              <span class="principle-number">03</span>
+              <div>
+                <h3>Safe practice environments</h3>
+                <p>Labs use synthetic data, simulators, isolated networks, prebuilt scenarios, fictional advisories, and resettable systems rather than live exploitation.</p>
+              </div>
+            </article>
+
+            <article class="principle-card reveal" style="--reveal-delay:240ms">
+              <span class="principle-number">04</span>
+              <div>
+                <h3>Human-validated AI</h3>
+                <p>AI-supported work requires approved data, prompt hygiene, source checking, independent validation, attribution, uncertainty, and documented limitations.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Course proposal metrics">
+          <article class="metric-card reveal" style="--reveal-delay:0ms">
+            <strong data-count="5">0</strong>
+            <span>Integrated learning units</span>
+          </article>
+          <article class="metric-card reveal" style="--reveal-delay:70ms">
+            <strong data-count="20">0</strong>
+            <span>Sequenced modules</span>
+          </article>
+          <article class="metric-card reveal" style="--reveal-delay:140ms">
+            <strong data-count="60">0</strong>
+            <span>Structured lesson experiences</span>
+          </article>
+          <article class="metric-card reveal" style="--reveal-delay:210ms">
+            <strong data-count="51">0</strong>
+            <span>Jurisdictions in the research package</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="motion-feature reveal" aria-labelledby="motion-title">
+        <div class="motion-copy">
+          <span class="motion-kicker">From concept to defensible action</span>
+          <h2 id="motion-title">Learning moves from <span>understanding systems</span> to protecting people and organizations.</h2>
+          <p>
+            The sequence deliberately expands the learner's sphere of responsibility: personal conduct, technical systems, analytical decisions, organizational controls, incident response, governance, and executive communication.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section" id="course-architecture" aria-labelledby="architecture-title">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-title">Scope &amp; Sequence</div>
+            <h2 id="architecture-title">Five units build a complete foundations pathway.</h2>
+          </div>
+          <p>
+            Select any unit to reveal its module progression, evidence package, safe performance tasks, and standards emphasis. The unit grouping below follows the module ranges stated in the proposal headings.
+          </p>
+        </div>
+
+        <div class="unit-grid">
+          <article class="unit-card reveal" id="unit-1">
+            <div class="unit-summary">
+              <div class="unit-badge" aria-hidden="true"><span>Unit</span><span>01</span></div>
+              <div class="unit-copy">
+                <div class="card-kicker">Modules 1–4</div>
+                <h3>Cyber Foundations</h3>
+                <p>Establish legal and ethical practice, model computing systems, trace network communication, and diagnose protocols, ports, services, and connectivity.</p>
+                <div class="topic-row">
+                  <span class="topic-chip">Authorization</span>
+                  <span class="topic-chip">Careers</span>
+                  <span class="topic-chip">Systems</span>
+                  <span class="topic-chip">OSI / TCP-IP</span>
+                  <span class="topic-chip">Troubleshooting</span>
+                </div>
+              </div>
+              <button class="expand-button" type="button" aria-expanded="false" aria-controls="unit-1-detail">
+                <span class="expand-label">Click to read more</span>
+                <span class="expand-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="expandable-wrap" id="unit-1-detail">
+              <div class="expandable-inner">
+                <div class="unit-detail">
+                  <div class="detail-panel">
+                    <h4>Module progression</h4>
+                    <ol class="module-list">
+                      <li data-module="1">Cybersecurity, ethics, authorization, and careers</li>
+                      <li data-module="2">Computing systems, abstraction, and decomposition</li>
+                      <li data-module="3">Networking foundations and the OSI model</li>
+                      <li data-module="4">Protocols, ports, services, and troubleshooting</li>
+                    </ol>
+                    <div class="detail-callout">Essential progression: define what work is permitted, understand the system, explain how data moves, then use approved evidence to isolate a fault.</div>
+                  </div>
+                  <div class="detail-panel">
+                    <h4>Required evidence &amp; safe performance</h4>
+                    <ul class="evidence-list">
+                      <li>Ethics and authorization decision memo, signed lab compact, and inclusive NICE role profile</li>
+                      <li>System decomposition and trust-boundary model</li>
+                      <li>Annotated network diagram and packet-journey explanation</li>
+                      <li>Troubleshooting log with commands, observations, conclusion, and verification</li>
+                    </ul>
+                    <p class="standards-note">National anchors include digital citizenship, acceptable use, computing systems, communication, protocols, network design, and protection practices.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card reveal" id="unit-2">
+            <div class="unit-summary">
+              <div class="unit-badge" aria-hidden="true"><span>Unit</span><span>02</span></div>
+              <div class="unit-copy">
+                <div class="card-kicker">Modules 5–8</div>
+                <h3>Securing Digital Systems</h3>
+                <p>Apply core security principles, reason through threats and human risk, design identity and access controls, and select cryptographic tools for secure communication.</p>
+                <div class="topic-row">
+                  <span class="topic-chip">CIA Triad</span>
+                  <span class="topic-chip">Threat Modeling</span>
+                  <span class="topic-chip">Social Engineering</span>
+                  <span class="topic-chip">Identity &amp; Access</span>
+                  <span class="topic-chip">Cryptography</span>
+                </div>
+              </div>
+              <button class="expand-button" type="button" aria-expanded="false" aria-controls="unit-2-detail">
+                <span class="expand-label">Click to read more</span>
+                <span class="expand-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="expandable-wrap" id="unit-2-detail">
+              <div class="expandable-inner">
+                <div class="unit-detail">
+                  <div class="detail-panel">
+                    <h4>Module progression</h4>
+                    <ol class="module-list">
+                      <li data-module="5">Security principles and threat modeling</li>
+                      <li data-module="6">Threat actors, social engineering, and human risk</li>
+                      <li data-module="7">Identity, authentication, and access control</li>
+                      <li data-module="8">Cryptography and secure communication</li>
+                    </ol>
+                    <div class="detail-callout">Essential progression: define the risk, verify suspicious communication with evidence, constrain access, then match cryptographic controls to the security problem.</div>
+                  </div>
+                  <div class="detail-panel">
+                    <h4>Required evidence &amp; safe performance</h4>
+                    <ul class="evidence-list">
+                      <li>Threat model and control-rationale matrix</li>
+                      <li>Spoof Detective evidence log and security-awareness micro-lesson</li>
+                      <li>Access-control audit and revised least-privilege permissions matrix</li>
+                      <li>Cryptography concept model and scenario-based control recommendation</li>
+                    </ul>
+                    <p class="standards-note">National anchors include confidentiality, integrity, availability, information protection, social-engineering awareness, authentication, access control, and cryptography.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card reveal" id="unit-3">
+            <div class="unit-summary">
+              <div class="unit-badge" aria-hidden="true"><span>Unit</span><span>03</span></div>
+              <div class="unit-copy">
+                <div class="card-kicker">Modules 9–12</div>
+                <h3>Secure Computing and Analysis</h3>
+                <p>Harden endpoints, prioritize vulnerabilities, build and test defensive software, and transform synthetic logs into reproducible, appropriately qualified conclusions.</p>
+                <div class="topic-row">
+                  <span class="topic-chip">Endpoint Hardening</span>
+                  <span class="topic-chip">Vulnerabilities</span>
+                  <span class="topic-chip">Secure Coding</span>
+                  <span class="topic-chip">Testing</span>
+                  <span class="topic-chip">Log Analysis</span>
+                </div>
+              </div>
+              <button class="expand-button" type="button" aria-expanded="false" aria-controls="unit-3-detail">
+                <span class="expand-label">Click to read more</span>
+                <span class="expand-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="expandable-wrap" id="unit-3-detail">
+              <div class="expandable-inner">
+                <div class="unit-detail">
+                  <div class="detail-panel">
+                    <h4>Module progression</h4>
+                    <ol class="module-list">
+                      <li data-module="9">Operating systems and endpoint hardening</li>
+                      <li data-module="10">Software, patching, vulnerabilities, and disclosure</li>
+                      <li data-module="11">Algorithms, secure coding, testing, and debugging</li>
+                      <li data-module="12">Data representation, analysis, logs, and monitoring</li>
+                    </ol>
+                    <div class="detail-callout">Essential progression: establish a secure baseline, prioritize remediation, encode defensive reasoning in a tested artifact, then analyze event evidence reproducibly.</div>
+                  </div>
+                  <div class="detail-panel">
+                    <h4>Required evidence &amp; safe performance</h4>
+                    <ul class="evidence-list">
+                      <li>Hardened endpoint baseline with before-and-after verification and rollback documentation</li>
+                      <li>Vulnerability prioritization board and responsible patch/disclosure brief</li>
+                      <li>Tested defensive program, source code, test table, and reflection</li>
+                      <li>Log-analysis notebook or spreadsheet with reproducible steps, visualization, and uncertainty</li>
+                    </ul>
+                    <p class="standards-note">National anchors include operating-system security, software security, algorithms and programming, network operations, data analysis, testing, and documented validation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card reveal" id="unit-4">
+            <div class="unit-summary">
+              <div class="unit-badge" aria-hidden="true"><span>Unit</span><span>04</span></div>
+              <div class="unit-copy">
+                <div class="card-kicker">Modules 13–16</div>
+                <h3>Protecting Organizations and Data</h3>
+                <p>Design layered defenses, assign responsibility across connected services and devices, protect sensitive information, and translate legal, ethical, and operational requirements into usable policy.</p>
+                <div class="topic-row">
+                  <span class="topic-chip">Defense in Depth</span>
+                  <span class="topic-chip">Cloud / Mobile / IoT</span>
+                  <span class="topic-chip">Privacy</span>
+                  <span class="topic-chip">Data Protection</span>
+                  <span class="topic-chip">Policy &amp; Governance</span>
+                </div>
+              </div>
+              <button class="expand-button" type="button" aria-expanded="false" aria-controls="unit-4-detail">
+                <span class="expand-label">Click to read more</span>
+                <span class="expand-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="expandable-wrap" id="unit-4-detail">
+              <div class="expandable-inner">
+                <div class="unit-detail">
+                  <div class="detail-panel">
+                    <h4>Module progression</h4>
+                    <ol class="module-list">
+                      <li data-module="13">Network attacks and layered defense</li>
+                      <li data-module="14">Cloud, mobile, IoT, and shared responsibility</li>
+                      <li data-module="15">Data protection, privacy, identity, and digital footprints</li>
+                      <li data-module="16">Cyber law, intellectual property, policy, and governance</li>
+                    </ol>
+                    <div class="detail-callout">Essential progression: connect attack patterns to controls, assign responsibility, protect data throughout its lifecycle, and make requirements usable through policy.</div>
+                  </div>
+                  <div class="detail-panel">
+                    <h4>Required evidence &amp; safe performance</h4>
+                    <ul class="evidence-list">
+                      <li>Layered-defense evaluation and revised network diagram with residual risk</li>
+                      <li>AI Security Advisor device review and shared-responsibility matrix</li>
+                      <li>Privacy and data-protection plan plus an AI Prompt Safety decision log</li>
+                      <li>Policy/compliance brief and a testable security and AI-use policy</li>
+                    </ul>
+                    <p class="standards-note">National anchors include network and computer security, cloud and IoT, personal information, data protection, law, intellectual property, policy, and governance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit-card reveal" id="unit-5">
+            <div class="unit-summary">
+              <div class="unit-badge" aria-hidden="true"><span>Unit</span><span>05</span></div>
+              <div class="unit-copy">
+                <div class="card-kicker">Modules 17–20</div>
+                <h3>Cyber Operations and Leadership</h3>
+                <p>Assess organizational risk, build resilience, respond to incidents without destroying evidence, evaluate AI-system security, and communicate a coherent capstone strategy.</p>
+                <div class="topic-row">
+                  <span class="topic-chip">Risk &amp; Resilience</span>
+                  <span class="topic-chip">Incident Response</span>
+                  <span class="topic-chip">Forensics</span>
+                  <span class="topic-chip">AI-System Security</span>
+                  <span class="topic-chip">Capstone</span>
+                </div>
+              </div>
+              <button class="expand-button" type="button" aria-expanded="false" aria-controls="unit-5-detail">
+                <span class="expand-label">Click to read more</span>
+                <span class="expand-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="expandable-wrap" id="unit-5-detail">
+              <div class="expandable-inner">
+                <div class="unit-detail">
+                  <div class="detail-panel">
+                    <h4>Module progression</h4>
+                    <ol class="module-list">
+                      <li data-module="17">Risk, resilience, backup, and recovery</li>
+                      <li data-module="18">Incident response, digital forensics, and evidence</li>
+                      <li data-module="19">AI literacy and AI-system security</li>
+                      <li data-module="20">Capstone: protecting an organization</li>
+                    </ol>
+                    <div class="detail-callout">Essential progression: prepare for failure, preserve evidence under pressure, govern AI use and AI-system risk, then integrate the full course into a defensible organizational strategy.</div>
+                  </div>
+                  <div class="detail-panel">
+                    <h4>Required evidence &amp; safe performance</h4>
+                    <ul class="evidence-list">
+                      <li>Risk register and verified backup/recovery test plan</li>
+                      <li>Incident timeline, chain-of-custody form, response critique, and deepfake evidence brief</li>
+                      <li>AI-cyber risk and validation memo, source-check log, and secure-use checklist</li>
+                      <li>Capstone portfolio and technical/executive briefing based only on simulated or isolated systems and fictional data</li>
+                    </ul>
+                    <p class="standards-note">National anchors include loss prevention, risk treatment, incident response, evidence, network operations, AI governance, communication, and NIST CSF 2.0 vocabulary as supplemental guidance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-band" id="research" aria-labelledby="research-title">
+        <div class="research-inner">
+          <div class="section-title reveal">Standards, Approval &amp; Market Research</div>
+          <h2 class="reveal" id="research-title">From one course map to a 51-jurisdiction decision system.</h2>
+          <p class="research-lead reveal">
+            The companion research package is designed to help curriculum leaders evaluate standards alignment, approval pathways, pedagogy, implementation requirements, and market positioning across all fifty states and the District of Columbia. The cards below describe the intended analysis layers; they do not substitute for the full jurisdiction matrix or report.
+          </p>
+
+          <div class="research-grid">
+            <article class="research-card reveal">
+              <button class="research-toggle" type="button" aria-expanded="false" aria-controls="research-detail-1">
+                <span class="research-index">01</span>
+                <span>
+                  <span class="research-title">Standards and graduation fit</span>
+                  <p>Cybersecurity, computer science, digital citizenship, CTE, and related credit pathways.</p>
+                </span>
+                <span class="expand-icon" aria-hidden="true">🔎︎ </span>
+              </button>
+              <div class="expandable-wrap" id="research-detail-1">
+                <div class="expandable-inner">
+                  <div class="research-detail">
+                    <p>The jurisdiction matrix can document current standards, framework versions, course-code or subject-area fit, graduation-credit implications, and the national anchors used to support a portable core.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="research-card reveal" style="--reveal-delay:70ms">
+              <button class="research-toggle" type="button" aria-expanded="false" aria-controls="research-detail-2">
+                <span class="research-index">02</span>
+                <span>
+                  <span class="research-title">Approval and adoption pathways</span>
+                  <p>State, district, school, CTE, materials-review, safety, and instructor requirements.</p>
+                </span>
+                <span class="expand-icon" aria-hidden="true">🔎︎</span>
+              </button>
+              <div class="expandable-wrap" id="research-detail-2">
+                <div class="expandable-inner">
+                  <div class="research-detail">
+                    <p>The analysis can distinguish where approval is primarily state-led, locally controlled, CTE-mediated, or dependent on district curriculum review, teacher assignment rules, acceptable-use expectations, and cybersecurity lab safeguards.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="research-card reveal" style="--reveal-delay:140ms">
+              <button class="research-toggle" type="button" aria-expanded="false" aria-controls="research-detail-3">
+                <span class="research-index">03</span>
+                <span>
+                  <span class="research-title">Pedagogy and assessment</span>
+                  <p>Scenario-based learning, project work, safe labs, accessibility, and evidence-centered performance.</p>
+                </span>
+                <span class="expand-icon" aria-hidden="true">🔎︎</span>
+              </button>
+              <div class="expandable-wrap" id="research-detail-3">
+                <div class="expandable-inner">
+                  <div class="research-detail">
+                    <p>The course design emphasizes constructive alignment: essential questions, three lesson experiences, observable demonstrations, required evidence, safe performance tasks, and standards anchors reinforce one another within every module.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="research-card reveal" style="--reveal-delay:210ms">
+              <button class="research-toggle" type="button" aria-expanded="false" aria-controls="research-detail-4">
+                <span class="research-index">04</span>
+                <span>
+                  <span class="research-title">Market and implementation analysis</span>
+                  <p>Audience, competitive context, delivery models, staffing, technology, and adoption readiness.</p>
+                </span>
+                <span class="expand-icon" aria-hidden="true">🔎︎</span>
+              </button>
+              <div class="expandable-wrap" id="research-detail-4">
+                <div class="expandable-inner">
+                  <div class="research-detail">
+                    <p>The research report can translate the standards and approval landscape into practical product decisions: course positioning, implementation supports, teacher resources, platform requirements, lab constraints, accessibility, and phased launch priorities.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="research-actions reveal">
+            <a class="primary-btn" data-download-key="research" download href="#">
+              Download the 51-Jurisdiction Report <span aria-hidden="true">↓</span>
+            </a>
+            <a class="secondary-btn" data-download-key="jurisdictions" download href="#">
+              Download the Jurisdictions Matrix <span aria-hidden="true">↓</span>
+            </a>
+             <a href="Analysis/High_School_Cybersecurity_Standards_Analysis_Professional.html" class="secondary-btn">
+    View HTML Print of Jurisdictions Analysis (Jupyter Notebook) ->
+  </a>
+          </div>
+        </div>
+      </section>
+
+
+
+      
+<br><br>
+ <section
+  class="prototype-section"
+  id="prototype"
+  aria-labelledby="prototype-title"
+>
+  <div class="prototype-inner">
+    <div class="prototype-heading reveal">
+      <div>
+        <div class="section-title">Interactive Prototype Experience</div>
+        <h2 id="prototype-title">
+          Spoof Detective: evidence before action.
+        </h2>
+      </div>
+
+      <p>
+        The course's social-engineering module includes an interactive phishing
+        simulation. Open Spoof Detective to inspect a synthetic message, identify
+        evidence, classify the risk, and select a safe response.
+      </p>
+    </div>
+
+    <a
+      href="Spoof_Detective/dist/spoof-detective-phishing-simulation.html"
+      class="prototype-link reveal"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open the Spoof Detective interactive phishing simulation in a new tab"
+    >
+      <span class="prototype-link-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3 4.8 6.2v5.1c0 4.5 2.9 8 7.2 9.7 4.3-1.7 7.2-5.2 7.2-9.7V6.2L12 3Z"></path>
+          <path d="m8.8 12.1 2.1 2.1 4.5-4.7"></path>
+        </svg>
+      </span>
+
+      <span class="prototype-link-copy">
+        <span class="prototype-link-kicker">Launch the learning experience</span>
+        <span class="prototype-link-title">Click here to use the interactive prototype</span>
+        <span class="prototype-link-note">Analyze a simulated phishing case in the standalone Spoof Detective experience.</span>
+      </span>
+
+      <span class="prototype-link-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+      <section class="content-section compact" id="downloads" aria-labelledby="downloads-title">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-title">Downloadable Proposal Package</div>
+            <h2 id="downloads-title">Four artifacts support curriculum review and implementation.</h2>
+          </div>
+          <p>
+            Update the four file paths in <strong>PAGE_CONFIG.downloads</strong>, place the documents in your website's downloads folder, and the buttons below will work automatically.
+          </p>
+        </div>
+
+        <div class="download-grid">
+          <article class="download-card reveal" data-format="PDF">
+            <span class="download-icon" aria-hidden="true">01</span>
+            <div class="download-copy">
+              <div class="card-kicker">Course Architecture</div>
+              <h3>Scope and Sequence</h3>
+              <p>Five units, twenty modules, prerequisites, learning outcomes, lesson experiences, required evidence, safe performance tasks, and national anchors.</p>
+              <div class="download-meta">
+                <span class="format-pill">PDF</span>
+                <a class="download-link" data-download-key="scope" download href="#">Download <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="download-card reveal" style="--reveal-delay:70ms" data-format="XLSX">
+            <span class="download-icon" aria-hidden="true">02</span>
+            <div class="download-copy">
+              <div class="card-kicker">Adoption Research</div>
+              <h3>Jurisdictions Matrix</h3>
+              <p>A structured state-by-state and District of Columbia comparison for standards, approval, course fit, implementation, and related decision criteria.</p>
+              <div class="download-meta">
+                <span class="format-pill">XLSX</span>
+                <a class="download-link" data-download-key="jurisdictions" download href="#">Download <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="download-card reveal" style="--reveal-delay:140ms" data-format="IPYNB">
+            <span class="download-icon" aria-hidden="true">03</span>
+            <div class="download-copy">
+              <div class="card-kicker">Reproducible Analysis</div>
+              <h3>Jupyter Notebook: Standards Matrix</h3>
+              <p>A reproducible notebook for cleaning, querying, summarizing, validating, and visualizing the standards and jurisdiction dataset.</p>
+              <div class="download-meta">
+                <span class="format-pill">IPYNB</span>
+                <a class="download-link" data-download-key="notebook" download href="#">Download <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="download-card reveal" style="--reveal-delay:210ms" data-format="PDF">
+            <span class="download-icon" aria-hidden="true">04</span>
+            <div class="download-copy">
+              <div class="card-kicker">Research Report</div>
+              <h3>51-Jurisdiction Standards, Approval, Pedagogy, and Market Analysis</h3>
+              <p>The full research narrative connecting jurisdiction-level findings to course design, approval strategy, pedagogy, implementation, and market decisions.</p>
+              <div class="download-meta">
+                <span class="format-pill">PDF</span>
+                <a class="download-link" data-download-key="research" download href="#">Download <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="connect-strip reveal" id="contact">
+        <div class="idea-icon" aria-hidden="true">☼</div>
+        <p>
+          I connect learning science, technical subject-matter expertise, program strategy, and classroom experience to design curriculum that works in practice—not only on paper.
+        </p>
+        <a class="outline-btn magnetic" href="contact.html">
+          Let’s Connect <span aria-hidden="true">→</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="site-footer-copy">
+          <p class="site-footer-label">Let's Connect</p>
+          <h2>Interested in working together?</h2>
+          <p>
+            Whether you're building curriculum, launching a new program, exploring AI in education, or looking for an instructional design leader, I'd love to hear about it.
+          </p>
+        </div>
+
+        <div class="site-footer-actions">
+          <a class="site-footer-button magnetic" href="contact.html">
+            Contact Me <span aria-hidden="true">→</span>
+          </a>
+          <a class="site-footer-email" href="mailto:upwardcreativeinfo@gmail.com">upwardcreativeinfo@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="site-footer-bottom">
+        <span>© 2026 Jamie Reichenberger</span>
+        <nav aria-label="Footer navigation">
+          <a href="index.html#about">About</a>
+          <a href="index.html#projects">Case Studies</a>
+          <a href="index.html#skills">Capabilities</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <template id="prototypeFallbackTemplate">
+    <div class="prototype-demo">
+      <div class="demo-nav">
+        <div class="demo-brand">
+          <span class="demo-brand-mark" aria-hidden="true">◇</span>
+          <span>PhishGuard <small style="display:block;color:#9fb4c8;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Evidence and Response</small></span>
+        </div>
+        <span class="demo-status">Training environment</span>
+      </div>
+
+      <div class="demo-grid">
+        <article class="artifact-card">
+          <div class="artifact-bar">
+            <span>Inbox · Case PG-006</span>
+            <span>Synthetic artifact</span>
+          </div>
+          <div class="email-surface">
+            <div class="email-subject">Immediate action required: keep your school account active</div>
+            <div class="email-meta">
+              <div class="email-avatar">IT</div>
+              <div>
+                <strong>School Technology Support</strong>
+                <small>From: <span class="evidence-target">security-team@school-support.co</span></small>
+              </div>
+            </div>
+            <p>Hello,</p>
+            <p>We detected an account issue that will permanently lock your files in 30 minutes. You must verify your password now to avoid losing access.</p>
+            <button class="fake-email-link" type="button" aria-label="Synthetic verification button that does not submit or navigate">Verify account now</button>
+            <p><strong>Do not contact the help desk</strong> because the automated review is already in progress.</p>
+            <p>Thank you,<br>Account Protection Team</p>
+          </div>
+        </article>
+
+        <aside class="analyst-card">
+          <div class="card-kicker" style="color:#50e6ff">Analyst notebook</div>
+          <h3>Classify the message.</h3>
+          <p>Use source, context, content, and channel evidence. Do not rely on appearance alone.</p>
+
+          <div class="clue-list">
+            <div class="clue-chip">Sender domain does not match the school's known domain.</div>
+            <div class="clue-chip">Urgency and loss language pressure the recipient to act.</div>
+            <div class="clue-chip">The message requests password verification through an external link.</div>
+            <div class="clue-chip">The sender discourages independent verification with the help desk.</div>
+          </div>
+
+          <div class="verdict-label">Your verdict</div>
+          <div class="verdict-row" role="group" aria-label="Choose a verdict">
+            <button class="verdict-button" type="button" data-verdict="safe">Safe</button>
+            <button class="verdict-button" type="button" data-verdict="suspicious">Suspicious</button>
+            <button class="verdict-button" type="button" data-verdict="malicious">Malicious</button>
+          </div>
+
+          <div class="verdict-feedback" aria-live="polite">
+            <strong>Review the evidence.</strong>
+            Select a verdict to receive decision feedback.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <dialog id="prototypeDialog" aria-labelledby="prototypeDialogTitle">
+    <div class="dialog-toolbar">
+      <strong id="prototypeDialogTitle">Spoof Detective · Focused Prototype View</strong>
+      <button class="dialog-close" id="prototypeDialogClose" type="button" aria-label="Close prototype">×</button>
+    </div>
+    <div class="dialog-body" id="prototypeDialogBody"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ================================================================
+       QUICK CONFIGURATION
+       Replace only these URLs and file paths after pasting this page.
+       Leave an embed URL blank to keep the designed placeholder/demo.
+       ================================================================ */
+    const PAGE_CONFIG = {
+      canvaEmbedUrl: "",
+      prototypeEmbedUrl: "",
+      downloads: {
+        scope: "downloads/Foundations-of-Cybersecurity-Scope-and-Sequence.docx",
+        jurisdictions: "downloads/Foundations-of-Cybersecurity-Jurisdictions-Matrix.xlsx",
+        notebook: "downloads/Foundations-of-Cybersecurity-Standards-Matrix.ipynb",
+        research: "downloads/51-Jurisdiction-Standards-Approval-Pedagogy-and-Market-Analysis.docx"
+      }
+    };
+
+    (() => {
+      "use strict";
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const header = document.getElementById("siteHeader");
+      const nav = document.getElementById("primaryNav");
+      const menuToggle = document.getElementById("menuToggle");
+      const toast = document.getElementById("toast");
+      let toastTimer;
+
+      const showToast = (message) => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 3600);
+      };
+
+      const isUsableUrl = (value) => {
+        if (!value || typeof value !== "string") return false;
+        const trimmed = value.trim();
+        return /^(https?:\/\/|\.\/|\.\.\/|\/)/i.test(trimmed) || /^[a-z0-9_-][^:]*\.html?(?:[?#].*)?$/i.test(trimmed);
+      };
+
+      /* Header and mobile navigation */
+      const closeMenu = () => {
+        nav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        document.body.classList.remove("menu-open");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const willOpen = !nav.classList.contains("is-open");
+        nav.classList.toggle("is-open", willOpen);
+        menuToggle.setAttribute("aria-expanded", String(willOpen));
+        menuToggle.setAttribute("aria-label", willOpen ? "Close menu" : "Open menu");
+        document.body.classList.toggle("menu-open", willOpen);
+      });
+
+      nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1180) closeMenu();
+      });
+
+      /* Scroll progress and header state */
+      const updateScrollUI = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? Math.min(100, (scrollTop / maxScroll) * 100) : 0;
+        document.documentElement.style.setProperty("--scroll-progress", `${progress}%`);
+        header.classList.toggle("is-scrolled", scrollTop > 12);
+      };
+
+      updateScrollUI();
+      window.addEventListener("scroll", updateScrollUI, { passive: true });
+
+      /* Scroll reveal */
+      const revealItems = document.querySelectorAll(".reveal");
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+
+      /* Count-up metrics */
+      const counters = document.querySelectorAll("[data-count]");
+      const animateCounter = (node) => {
+        if (node.dataset.counted === "true") return;
+        node.dataset.counted = "true";
+        const target = Number(node.dataset.count || 0);
+        if (reduceMotion) {
+          node.textContent = String(target);
+          return;
+        }
+        const duration = 900;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          node.textContent = String(Math.round(target * eased));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      if ("IntersectionObserver" in window) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.5 });
+        counters.forEach((counter) => counterObserver.observe(counter));
+      } else {
+        counters.forEach(animateCounter);
+      }
+
+      /* Click-to-read-more cards */
+      const bindExpandable = (button, card) => {
+        button.addEventListener("click", () => {
+          const willOpen = !card.classList.contains("is-open");
+          card.classList.toggle("is-open", willOpen);
+          button.setAttribute("aria-expanded", String(willOpen));
+          const label = button.querySelector(".expand-label");
+          if (label) label.textContent = willOpen ? "Close unit details" : "Click to read more";
+        });
+      };
+
+      document.querySelectorAll(".unit-card").forEach((card) => {
+        const button = card.querySelector(".expand-button");
+        if (button) bindExpandable(button, card);
+      });
+
+      document.querySelectorAll(".research-card").forEach((card) => {
+        const button = card.querySelector(".research-toggle");
+        if (button) bindExpandable(button, card);
+      });
+
+      /* Local section navigation state */
+      const sectionLinks = Array.from(document.querySelectorAll(".project-nav a"));
+      const sectionMap = sectionLinks
+        .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
+        .filter((item) => item.section);
+
+      if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          sectionMap.forEach(({ link, section }) => {
+            link.classList.toggle("is-current", section === visible.target);
+          });
+        }, { rootMargin: "-25% 0px -62% 0px", threshold: [0.02, 0.1, 0.3] });
+        sectionMap.forEach(({ section }) => sectionObserver.observe(section));
+      }
+
+      /* Optional Canva embed controls.
+         The current page uses a static Canva iframe, so these controls run only
+         when the optional dynamic elements are present. */
+      const canvaFrame = document.getElementById("canvaFrame");
+      const canvaPlaceholder = document.getElementById("canvaPlaceholder");
+      const presentationOpenButton = document.getElementById("presentationOpenButton");
+      const canvaUrl = PAGE_CONFIG.canvaEmbedUrl.trim();
+
+      if (canvaFrame && canvaPlaceholder && isUsableUrl(canvaUrl)) {
+        canvaFrame.src = canvaUrl;
+        canvaFrame.hidden = false;
+        canvaPlaceholder.hidden = true;
+      }
+
+      if (presentationOpenButton) {
+        presentationOpenButton.addEventListener("click", () => {
+          if (isUsableUrl(canvaUrl)) {
+            window.open(canvaUrl, "_blank", "noopener,noreferrer");
+          } else {
+            showToast("Add your Canva embed URL in PAGE_CONFIG.canvaEmbedUrl first.");
+          }
+        });
+      }
+
+      /* Optional embedded prototype support.
+         The visible CTA currently opens the standalone HTML experience directly. */
+      const prototypeMount = document.getElementById("prototypeMount");
+      const fallbackTemplate = document.getElementById("prototypeFallbackTemplate");
+      const prototypeUrl = PAGE_CONFIG.prototypeEmbedUrl.trim();
+
+      const mountPrototype = (target, focused = false) => {
+        if (!target || !fallbackTemplate) return;
+        target.replaceChildren();
+
+        if (isUsableUrl(prototypeUrl)) {
+          const iframe = document.createElement("iframe");
+          iframe.src = prototypeUrl;
+          iframe.title = focused
+            ? "Focused Spoof Detective interactive prototype"
+            : "Spoof Detective interactive prototype";
+          iframe.loading = focused ? "eager" : "lazy";
+          iframe.allow = "fullscreen; clipboard-write";
+          iframe.setAttribute("allowfullscreen", "");
+          iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms allow-downloads allow-popups");
+          target.appendChild(iframe);
+        } else {
+          target.appendChild(fallbackTemplate.content.cloneNode(true));
+        }
+      };
+
+      if (prototypeMount) {
+        mountPrototype(prototypeMount);
+      }
+
+      const verdictFeedback = {
+        safe: {
+          title: "Recheck the sender and request.",
+          message: "The message contains multiple high-risk indicators. A safe classification is not supported by the evidence."
+        },
+        suspicious: {
+          title: "Good caution—take the conclusion one step further.",
+          message: "The external domain, credential request, manufactured urgency, and attempt to block independent verification support a malicious classification."
+        },
+        malicious: {
+          title: "Evidence-supported classification.",
+          message: "Correct. Do not click or reply. Use a known reporting channel, preserve the message, and verify with the real help desk through an independently sourced contact method."
+        }
+      };
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest(".verdict-button");
+        if (!button) return;
+        const demo = button.closest(".prototype-demo");
+        if (!demo) return;
+        demo.querySelectorAll(".verdict-button").forEach((item) => item.classList.remove("is-selected"));
+        button.classList.add("is-selected");
+        const feedback = verdictFeedback[button.dataset.verdict];
+        const feedbackBox = demo.querySelector(".verdict-feedback");
+        if (feedbackBox && feedback) {
+          feedbackBox.innerHTML = `<strong>${feedback.title}</strong>${feedback.message}`;
+        }
+      });
+
+      /* Optional focused prototype dialog */
+      const prototypeDialog = document.getElementById("prototypeDialog");
+      const prototypeDialogBody = document.getElementById("prototypeDialogBody");
+      const prototypeOpenButton = document.getElementById("prototypeOpenButton");
+      const prototypeDialogClose = document.getElementById("prototypeDialogClose");
+
+      if (prototypeOpenButton && prototypeDialog && prototypeDialogBody) {
+        prototypeOpenButton.addEventListener("click", () => {
+          mountPrototype(prototypeDialogBody, true);
+          if (typeof prototypeDialog.showModal === "function") {
+            prototypeDialog.showModal();
+          } else if (isUsableUrl(prototypeUrl)) {
+            window.open(prototypeUrl, "_blank", "noopener,noreferrer");
+          } else {
+            showToast("Your browser does not support the focused dialog; the working demo remains available on the page.");
+          }
+        });
+      }
+
+      const closePrototypeDialog = () => {
+        if (!prototypeDialog || !prototypeDialogBody) return;
+        if (prototypeDialog.open) prototypeDialog.close();
+        prototypeDialogBody.replaceChildren();
+      };
+
+      if (prototypeDialogClose) {
+        prototypeDialogClose.addEventListener("click", closePrototypeDialog);
+      }
+
+      if (prototypeDialog) {
+        prototypeDialog.addEventListener("click", (event) => {
+          if (event.target === prototypeDialog) closePrototypeDialog();
+        });
+        prototypeDialog.addEventListener("close", () => {
+          if (prototypeDialogBody) prototypeDialogBody.replaceChildren();
+        });
+      }
+
+      /* Download paths */
+      document.querySelectorAll("[data-download-key]").forEach((link) => {
+        const key = link.dataset.downloadKey;
+        const path = PAGE_CONFIG.downloads[key];
+        if (path) {
+          link.href = path;
+        } else {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            showToast(`Add a file path for PAGE_CONFIG.downloads.${key}.`);
+          });
+        }
+      });
+
+      /* Lightweight magnetic-button motion */
+      if (!reduceMotion && window.matchMedia("(pointer:fine)").matches) {
+        document.querySelectorAll(".magnetic").forEach((element) => {
+          element.addEventListener("pointermove", (event) => {
+            const rect = element.getBoundingClientRect();
+            const x = (event.clientX - rect.left - rect.width / 2) * 0.1;
+            const y = (event.clientY - rect.top - rect.height / 2) * 0.1;
+            element.style.transform = `translate(${x}px, ${y}px)`;
+          });
+          element.addEventListener("pointerleave", () => {
+            element.style.transform = "";
+          });
+        });
+
+        const heroVisual = document.getElementById("heroVisual");
+        heroVisual.addEventListener("pointermove", (event) => {
+          const rect = heroVisual.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
+          const y = ((event.clientY - rect.top) / rect.height - 0.5) * 12;
+          heroVisual.style.setProperty("--hero-x", `${x}px`);
+          heroVisual.style.setProperty("--hero-y", `${y}px`);
+        });
+        heroVisual.addEventListener("pointerleave", () => {
+          heroVisual.style.setProperty("--hero-x", "0px");
+          heroVisual.style.setProperty("--hero-y", "0px");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

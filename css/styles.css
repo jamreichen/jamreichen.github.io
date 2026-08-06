@@ -4845,3 +4845,54 @@ details.case-study-detail[open] > .case-expanded {
   font-size: 15px;
   line-height: 1.75;
 }
+/* =========================================================
+   STICKY CASE-STUDY CLOSE BUTTON FIX
+   Keep this at the very end of the stylesheet.
+========================================================= */
+
+/*
+  overflow:hidden and contain:layout paint on the open case
+  study prevent the nested sticky button from following the
+  viewport.
+*/
+details.case-study-detail[open] {
+  overflow: visible;
+  contain: none;
+}
+
+/* Remove the sticky-blocking overflow from the expanded area. */
+details.case-study-detail[open] > .case-expanded {
+  overflow: visible;
+}
+
+/*
+  This rail remains the full height of its individual case study.
+  The X will therefore stop when the bottom of that case study
+  reaches it rather than following the user through the whole page.
+*/
+details.case-study-detail[open] .case-close-rail {
+  position: relative;
+  align-self: stretch;
+  min-height: 100%;
+  overflow: visible;
+}
+
+/* Keep the X visible beneath the sticky site header. */
+details.case-study-detail[open] .case-close-btn {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 118px;
+}
+
+@media (max-width: 980px) {
+  details.case-study-detail[open] .case-close-btn {
+    top: 96px;
+  }
+}
+
+/* Preserve your current mobile close-button layout. */
+@media (max-width: 760px) {
+  details.case-study-detail[open] .case-close-btn {
+    position: static;
+  }
+}

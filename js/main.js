@@ -781,39 +781,138 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-    document.addEventListener("DOMContentLoaded", function() {
-      const bgm = document.getElementById("bg-music");
-      const clickSfx = document.getElementById("click-sfx");
+  /* =========================================================
+   BACKGROUND MUSIC
+   Music is on by default and begins as soon as the browser
+   allows audio playback.
+========================================================= */
 
-      let isMuted = localStorage.getItem('isMuted') === 'true'; // Get the stored mute state
+document.addEventListener("DOMContentLoaded", () => {
+  const bgm = document.getElementById("bg-music");
+  const clickSfx = document.getElementById("click-sfx");
+  const muteButton = document.querySelector(".mute-btn");
 
-      // Ensure the volume is low
-   // Initial volume settings
-   bgm.volume = 0.1;
+  if (!bgm || !muteButton) {
+    return;
+  }
+
+  /*
+    New visitors default to music ON.
+
+    A visitor who intentionally muted the site will remain muted
+    when returning or refreshing.
+  */
+  let isMuted = localStorage.getItem("isMuted") === "true";
+
+  bgm.volume = 0.1;
   bgm.muted = isMuted;
 
-      // Ensure play starts on first user click
-      window.addEventListener("click", () => {
-        if (bgm.paused) {  // Make sure the background music is playing if it’s paused
-          bgm.play();
-        }
-      });
+  if (clickSfx) {
+    clickSfx.volume = 0.25;
+    clickSfx.muted = isMuted;
+  }
 
-    // Attach mute function to mute button
-    document.querySelector('.mute-btn').addEventListener('click', toggleMute);
-      function toggleMute() {
-        isMuted = !isMuted;
-        bgm.muted = isMuted;  // Properly mute/unmute
-        clickSfx.muted = isMuted;
-        
-        // Update button text
-        document.querySelector('.mute-btn').textContent = isMuted ? '🔇' : '🔊';
-        
-        // Store the new mute state in localStorage
-        localStorage.setItem('isMuted', isMuted);
-      }
-        });
+  function updateMuteButton() {
+    muteButton.textContent = isMuted ? "🔇" : "🔊";
 
+    muteButton.setAttribute(
+      "aria-label",
+      isMuted
+        ? "Turn on background music"
+        : "Mute background music"
+    );
+
+    muteButton.setAttribute(
+      "title",
+      isMuted
+        ? "Turn on background music"
+        : "Mute background music"
+    );
+
+    muteButton.setAttribute(
+      "aria-pressed",
+      String(isMuted)
+    );
+  }
+
+  async function startBackgroundMusic() {
+    if (isMuted || !bgm.paused) {
+      return;
+    }
+
+    try {
+      await bgm.play();
+    } catch (error) {
+      /*
+        Audible autoplay was blocked by the browser.
+        The first visitor interaction below will try again.
+      */
+    }
+  }
+
+  updateMuteButton();
+
+  /*
+    Attempt playback immediately. This works when the visitor's
+    browser already permits autoplay for the site.
+  */
+  startBackgroundMusic();
+
+  /*
+    When immediate autoplay is blocked, begin playback after the
+    visitor's first click, tap, or keyboard interaction.
+  */
+  function unlockBackgroundMusic() {
+    startBackgroundMusic();
+
+    document.removeEventListener(
+      "pointerdown",
+      unlockBackgroundMusic
+    );
+
+    document.removeEventListener(
+      "keydown",
+      unlockBackgroundMusic
+    );
+  }
+
+  document.addEventListener(
+    "pointerdown",
+    unlockBackgroundMusic,
+    { once: true }
+  );
+
+  document.addEventListener(
+    "keydown",
+    unlockBackgroundMusic,
+    { once: true }
+  );
+
+  muteButton.addEventListener("click", async () => {
+    isMuted = !isMuted;
+
+    bgm.muted = isMuted;
+
+    if (clickSfx) {
+      clickSfx.muted = isMuted;
+    }
+
+    localStorage.setItem(
+      "isMuted",
+      String(isMuted)
+    );
+
+    updateMuteButton();
+
+    /*
+      Clicking the button to turn music back on counts as a
+      browser-approved user interaction.
+    */
+    if (!isMuted) {
+      await startBackgroundMusic();
+    }
+  });
+});
   const contactMenuToggle =
     document.getElementById("contactMenuToggle");
 
@@ -856,3 +955,149 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+
+/* =========================================================
+   FOUNDATIONS OF CYBERSECURITY COURSE
+   Scoped to .cyber-course so it does not affect the
+   portfolio navigation, reveals, or other page interactions.
+   ========================================================= */
+(() => {
+  const initializeCyberCourse = () => {
+    const course = document.querySelector(".cyber-course");
+
+    if (!course || course.dataset.cyberJsReady === "true") {
+      return;
+    }
+
+    course.dataset.cyberJsReady = "true";
+
+    const menuButton = course.querySelector(
+      ".cyber-menu-toggle"
+    );
+
+    const navigation = course.querySelector(
+      "#cyber-course-nav"
+    );
+
+    const closeCourseMenu = () => {
+      if (!menuButton || !navigation) return;
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "Open course navigation"
+      );
+
+      navigation.classList.remove("cyber-open");
+    };
+
+    if (menuButton && navigation) {
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.addEventListener("click", () => {
+        const isOpen =
+          menuButton.getAttribute("aria-expanded") ===
+          "true";
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(!isOpen)
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Open course navigation"
+            : "Close course navigation"
+        );
+
+        navigation.classList.toggle(
+          "cyber-open",
+          !isOpen
+        );
+      });
+
+      navigation
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener(
+            "click",
+            closeCourseMenu
+          );
+        });
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (event.key === "Escape") {
+            closeCourseMenu();
+          }
+        }
+      );
+
+      window.addEventListener(
+        "resize",
+        () => {
+          if (window.innerWidth > 1050) {
+            closeCourseMenu();
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    const revealItems =
+      course.querySelectorAll("[data-reveal]");
+
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+    ) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add(
+              "cyber-revealed"
+            );
+
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -5% 0px"
+        }
+      );
+
+      revealItems.forEach((item) => {
+        observer.observe(item);
+      });
+    } else {
+      revealItems.forEach((item) => {
+        item.classList.add("cyber-revealed");
+      });
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeCyberCourse,
+      { once: true }
+    );
+  } else {
+    initializeCyberCourse();
+  }
+})();
