@@ -3190,6 +3190,125 @@
         border-radius: 20px;
       }
     }
+
+    /* ================================================================
+       SPOOF DETECTIVE — BEHIND THE PROTOTYPE
+       Editorial bridge from the live prototype to the full design case study.
+       ================================================================ */
+    .prototype-process-section {
+      position: relative;
+    }
+
+    .prototype-process-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: clamp(44px, 7vw, 96px);
+      align-items: start;
+    }
+
+    .prototype-process-intro {
+      position: sticky;
+      top: calc(var(--header-height) + 34px);
+    }
+
+    .prototype-process-intro .section-title {
+      margin-bottom: 16px;
+    }
+
+    .prototype-process-intro h2 {
+      max-width: 660px;
+      margin-bottom: 22px;
+      font-size: clamp(2.45rem, 4.8vw, 4.8rem);
+      line-height: 1.02;
+    }
+
+    .prototype-process-intro > p {
+      max-width: 650px;
+      margin-bottom: 28px;
+      font-size: 1.02rem;
+      line-height: 1.78;
+    }
+
+    .prototype-process-button {
+      width: fit-content;
+    }
+
+    .prototype-process-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .prototype-process-item {
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 22px;
+      padding: clamp(26px, 4vw, 38px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .prototype-process-number {
+      color: var(--peach-500);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.35rem;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .prototype-process-item h3 {
+      margin-bottom: 10px;
+      color: var(--ink-950);
+      font-size: clamp(1.35rem, 2.3vw, 2rem);
+    }
+
+    .prototype-process-item p {
+      max-width: 720px;
+      margin-bottom: 14px;
+      line-height: 1.72;
+    }
+
+    .prototype-process-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .prototype-process-tags span {
+      padding: 6px 9px;
+      color: var(--teal-700);
+      border: 1px solid rgba(19, 87, 91, 0.14);
+      border-radius: 999px;
+      background: var(--teal-100);
+      font-size: 0.67rem;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width: 900px) {
+      .prototype-process-layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .prototype-process-intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .prototype-process-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .prototype-process-number {
+        font-size: 1.8rem;
+      }
+
+      .prototype-process-button {
+        width: 100%;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -3211,13 +3330,13 @@
       </a>
 
       <nav class="nav" id="primaryNav" aria-label="Primary navigation">
-        <a href="index.html#about">About</a>
-        <a href="index.html#projects">Case Studies</a>
-        <a class="active" href="#top">CYBERSECURITY CURRICULUM DESIGN</a>
-        <a href="index.html#case-studies">Experience</a>
-        <a href="index.html#approach">Approach</a>
-        <a href="index.html#skills">Capabilities</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html#about">ABOUT</a>
+        <a href="index.html#projects">CASE STUDIES</a>
+        <a class="active" href="#top">CYBERSECURITY STUDY</a>
+        <a href="index.html#case-studies">EXPERIENCE</a>
+        <a href="index.html#approach">APPROACH</a>
+        <a href="index.html#skills">CAPABILITIES</a>
+        <a href="contact.html">CONTACT</a>
       </nav>
 
       <a class="resume-btn magnetic" href="contact.html">
@@ -3299,6 +3418,7 @@
         <a href="#course-architecture">Course Architecture</a>
         <a href="#research">Research</a>
         <a href="#prototype">Prototype</a>
+        <a href="#prototype-design">Behind the Scenes</a>
         <a href="#downloads">Downloads</a>
       </nav>
 
@@ -3812,6 +3932,95 @@
     </a>
   </div>
 </section>
+      
+      <section
+        class="content-section compact prototype-process-section"
+        id="prototype-design"
+        aria-labelledby="prototype-design-title"
+      >
+        <div class="prototype-process-layout">
+          <div class="prototype-process-intro reveal">
+            <div class="section-title">Behind the Prototype</div>
+            <h2 id="prototype-design-title">
+              Go behind the scenes of how <em>Spoof Detective</em> was created.
+            </h2>
+            <p>
+              The playable simulation is only the final layer. The companion case study
+              traces how the experience moved from a cybersecurity learning objective to
+              a structured investigation loop—then through research, wireframes,
+              interaction design, accessible development, testing, and iteration.
+            </p>
+
+            <a
+              class="primary-btn magnetic prototype-process-button"
+              href="cybersecurity_phising_game_design.html"
+            >
+              Explore the design process <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="prototype-process-list">
+            <article class="prototype-process-item reveal">
+              <span class="prototype-process-number" aria-hidden="true">01</span>
+              <div>
+                <h3>Design the learning experience first</h3>
+                <p>
+                  The prototype begins with the learner, the performance objective, and
+                  the evidence needed to demonstrate sound phishing judgment. The core
+                  loop asks learners to inspect, identify, explain, decide, and reflect
+                  rather than simply guess whether a message is safe.
+                </p>
+                <div class="prototype-process-tags" aria-label="Learning design topics">
+                  <span>Learner analysis</span>
+                  <span>Objectives</span>
+                  <span>Scenario design</span>
+                  <span>Evidence of mastery</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="prototype-process-item reveal">
+              <span class="prototype-process-number" aria-hidden="true">02</span>
+              <div>
+                <h3>Translate the strategy into an investigation interface</h3>
+                <p>
+                  Wireframes and interaction patterns were shaped around the reasoning
+                  task: keep the simulated message readable, make evidence inspectable,
+                  and give learners a clear place to record clues and make a defensible
+                  decision without overwhelming the screen.
+                </p>
+                <div class="prototype-process-tags" aria-label="Prototype design topics">
+                  <span>Wireframes</span>
+                  <span>Interaction design</span>
+                  <span>Visual system</span>
+                  <span>Accessibility</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="prototype-process-item reveal">
+              <span class="prototype-process-number" aria-hidden="true">03</span>
+              <div>
+                <h3>Build, test, and refine the system</h3>
+                <p>
+                  The final prototype uses reusable interface components, synthetic
+                  phishing scenarios, feedback tied to learner reasoning, and
+                  classroom-safe interactions. Testing focuses on whether learners can
+                  notice meaningful evidence, explain risk, and transfer that judgment
+                  to new scenarios.
+                </p>
+                <div class="prototype-process-tags" aria-label="Development and validation topics">
+                  <span>Reusable components</span>
+                  <span>Safe simulation</span>
+                  <span>Feedback logic</span>
+                  <span>Validation</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="content-section compact" id="downloads" aria-labelledby="downloads-title">
         <div class="section-heading reveal">
           <div>
