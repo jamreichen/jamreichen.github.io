@@ -3661,13 +3661,16 @@
     }
 
 </style>
+
+  <link rel="stylesheet" href="css/site-header.css">
+  <script src="js/site-header.js" defer></script>
 </head>
-<body>
+<body data-nav-page="cybersecurity">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <div class="site-shell">
-    <header class="site-header" id="siteHeader">
+        <header class="site-header" id="siteHeader">
       <a class="brand" href="index.html#top" aria-label="Jamie Reichenberger home">
         <img
           src="Assets/logo.png"
@@ -3681,13 +3684,13 @@
       </a>
 
       <nav class="nav" id="primaryNav" aria-label="Primary navigation">
-        <a href="index.html#about">About</a>
-        <a href="index.html#projects">Case Studies</a>
-        <a class="active" href="#top">CYBERSECURITY STUDY</a>
-        <a href="index.html#case-studies">Experience</a>
-        <a href="index.html#approach">Approach</a>
-        <a href="index.html#skills">Capabilities</a>
-        <a href="contact.html">Contact</a>
+        <a data-nav="about" href="index.html#about">About</a>
+        <a data-nav="case-studies" href="index.html#projects">Case Studies</a>
+        <a data-nav="cybersecurity" href="cybersecurity_curriculum_design.html">Cybersecurity Study</a>
+        <a data-nav="experience" href="index.html#case-studies">Experience</a>
+        <a data-nav="approach" href="index.html#approach">Approach</a>
+        <a data-nav="capabilities" href="index.html#skills">Capabilities</a>
+        <a data-nav="contact" href="contact.html">Contact</a>
       </nav>
 
       <a class="resume-btn magnetic" href="contact.html">
@@ -3699,10 +3702,12 @@
         id="menuToggle"
         type="button"
         aria-label="Open menu"
-        aria-controls="primaryNav"
         aria-expanded="false"
+        aria-controls="primaryNav"
       >
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </header>
 

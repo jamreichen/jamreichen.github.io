@@ -37,53 +37,53 @@
   >
 
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/responsive-fixes.css">
+ <link rel="stylesheet" href="css/site-header.css">
 </head>
 
 <body>
-<header class="site-header">
+<body data-nav-page="contact">
+  <div class="site-shell">
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="index.html#top" aria-label="Jamie Reichenberger home">
+        <img
+          src="Assets/logo.png"
+          alt="Jamie Reichenberger Logo"
+          class="brand-logo"
+        >
+        <div class="brand-copy">
+          <strong>Jamie Reichenberger</strong>
+          <span>Senior Curriculum Director &amp; AI Learning Strategist</span>
+        </div>
+      </a>
 
-  <a class="brand" href="index.html" aria-label="Jamie Reichenberger home">
-    <img
-      src="Assets/logo.png"
-      alt="Jamie Reichenberger Logo"
-      class="brand-logo"
-    >
+      <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+        <a data-nav="about" href="index.html#about">About</a>
+        <a data-nav="case-studies" href="index.html#projects">Case Studies</a>
+        <a data-nav="cybersecurity" href="cybersecurity_curriculum_design.html">Cybersecurity Study</a>
+        <a data-nav="experience" href="index.html#case-studies">Experience</a>
+        <a data-nav="approach" href="index.html#approach">Approach</a>
+        <a data-nav="capabilities" href="index.html#skills">Capabilities</a>
+        <a data-nav="contact" href="contact.html">Contact</a>
+      </nav>
 
-    <div class="brand-copy">
-      <strong>Jamie Reichenberger</strong>
-      <span>Senior Curriculum Director &amp; Strategist</span>
-    </div>
-  </a>
+      <a class="resume-btn magnetic" href="contact.html">
+        Let's Connect <span aria-hidden="true">→</span>
+      </a>
 
-  <nav class="nav" id="primaryNav" aria-label="Primary navigation">
-    <a href="index.html#about">About</a>
-    <a href="index.html#projects">Case Studies</a>
-       <a href="cybersecurity_curriculum_design.html">CYBERSECURITY STUDY</a>
-    <a href="index.html#case-studies">Experience</a>
-    <a href="index.html#approach">Approach</a>
-    <a href="index.html#skills">Capabilities</a>
-    <a class="active" href="contact.html">Contact</a>
-  </nav>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
-  <a class="resume-btn magnetic" href="contact.html">
-    Let's Connect
-    <span aria-hidden="true">→</span>
-  </a>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Open menu"
-    aria-expanded="false"
-    aria-controls="primaryNav"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-</header>
 
   <main class="contact-page">
 
